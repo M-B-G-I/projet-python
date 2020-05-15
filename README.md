@@ -1,4 +1,6 @@
 # projet-python
+createAdmin():b
+createUser():j
 addJob() :b
 updateJob():j
 deleteJob():g
