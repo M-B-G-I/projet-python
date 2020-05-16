@@ -31,10 +31,6 @@ def createAdmin():
                 writing.writerow({'AdminName': AdminName, 'AdminPassword': AdminPassword})
                 f.close()
 
-    def onClick_exit():
-        window.destroy()
-        exit()
-
     window = tk.Tk()
     window.title("Create a new Administrator")
     tk.Label(window, text="User Name").grid(row=0, column=0)
@@ -47,7 +43,6 @@ def createAdmin():
     e2.grid(row=1, column=1)
 
     tk.Button(text='Create', width=6, command=onClick_create()).grid(row=2, column=0, pady=12, padx=12, sticky=tk.W)
-    tk.Button(text='Exit', width=4, command=onClick_exit()).grid(row=2, column=1, pady=12, sticky=tk.W)
 
     window.mainloop()
 
