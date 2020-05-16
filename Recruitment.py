@@ -1,7 +1,8 @@
 from tkinter import *
-
-def AdminOptions():
-
+from AdminAuthentificationAndOptionsWindow import AdminAuthAndOp
+from UserAuthentificationAndOptionsWindow import UserAuthAndOp
+from createAdmin import createAdmin
+#from createUser import createUser
 
 def AdminWindow():
     # Login Screen
@@ -12,9 +13,9 @@ def AdminWindow():
     LabelFrame(adminScreen,text='Hello Administrator',bg='grey',font=('veranda',30),height="100", width="2000",).pack(anchor=CENTER)
     # Admin or job seeker ?
     Button(adminScreen,text='Sign in', bd=3, relief='raised', font=("system", 10), height="2", width="30",
-           command=AdminOptions).pack(pady=12, anchor=CENTER)
+           command=AdminAuthAndOp).pack(pady=12, anchor=CENTER)
     Button(adminScreen,text='Sign up', bd=3, relief='raised', font=('system', 10), height="2", width="30",
-           command=UserWindow).pack(pady=12, anchor=CENTER)
+           command=createAdmin).pack(pady=12, anchor=CENTER)
 
 def UserWindow():
     # Login Screen
@@ -23,11 +24,14 @@ def UserWindow():
     userScreen.geometry('1024x681')
     userScreen.title('User Login')
     # Sign in or Sign up
+    LabelFrame(adminScreen,text='Hello User',bg='grey',font=('veranda',30),height="100", width="2000",).pack(anchor=CENTER)
     Button(userScreen,text='Sign in', bd=3, relief='raised', font=("system", 10), height="2", width="30",
-           command=AdminWindow).pack(pady=12, anchor=CENTER)
-    Button(userScreen,text='Sign up', bd=3, relief='raised', font=('system', 10), height="2", width="30", command=UserWindow).pack(
+           command=UserAuthAndOp).pack(pady=12, anchor=CENTER)
+    Button(userScreen,text='Sign up', bd=3, relief='raised', font=('system', 10), height="2", width="30", #command=createUser
+            ).pack(
         pady=12, anchor=CENTER)
 
+# Main Prog
 def main():
     global mainScreen
     mainScreen=Tk()

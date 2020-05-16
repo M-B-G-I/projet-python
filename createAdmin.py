@@ -48,6 +48,3 @@ def createAdmin():
     tk.Button(text='Create', width=6, command=onClick_create(username,password)).grid(row=2, column=0, pady=12, padx=12, sticky=tk.W)
 
     window.mainloop()
-
-
-createAdmin()
