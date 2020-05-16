@@ -4,6 +4,7 @@ def AdminWindow():
     screen1=Toplevel(mainScreen)
     screen1.geometry('1024x681')
     screen1.title('Administrator Login')
+    
 
 def UserWindow():
     screen1 = Toplevel(mainScreen)
