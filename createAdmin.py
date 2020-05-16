@@ -1,9 +1,11 @@
 from tkinter import *
+from tkinter import messagebox
 import csv
 
 def register():
-    username_info=name.get()
-    password_info=password.get()
+    username_info=enteredName.get()
+    password_info=enteredPassword.get()
+    print(username_info,'**',password_info)
     f = open("Administrators.CSV", "w")
     writing = csv.DictWriter(f, fieldnames=['AdminName', 'AdminPassword'], delimiter=',')
     writing.writeheader()
@@ -11,7 +13,8 @@ def register():
     f.close()
     enteredName.delete(0,END)
     enteredPassword.delete(0,END)
-    Label(adminSignupScreen,text='registration success')
+    msg = messagebox.showinfo('ok',"registration success")
+    adminSignupScreen.destroy()
 
 def createAdmin():
     global adminSignupScreen
@@ -22,13 +25,8 @@ def createAdmin():
     frame.grid(row=1, column=1, columnspan=10, rowspan=10)
 
     # creation
-    global name
-    global password
     global enteredName
     global enteredPassword
-
-    name=StringVar()
-    password=StringVar()
 
     Label(frame, text=' Username').grid(row=2, column=1, sticky=W,pady=3)
     enteredName = Entry(frame)
