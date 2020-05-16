@@ -4,7 +4,7 @@ from UserAuthentificationAndOptionsWindow import UserAuthAndOp
 from createAdmin import createAdmin
 #from createUser import createUser
 
-def AdminWindow(gi):
+def AdminWindow():
     # Login Screen
     global adminScreen
     adminScreen=Toplevel(mainScreen)
