@@ -24,7 +24,7 @@ def UserWindow():
     userScreen.geometry('1024x681')
     userScreen.title('User Login')
     # Sign in or Sign up
-    LabelFrame(adminScreen,text='Hello User',bg='grey',font=('veranda',30),height="100", width="2000",).pack(anchor=CENTER)
+    LabelFrame(userScreen,text='Hello User',bg='grey',font=('veranda',30),height="100", width="2000",).pack(anchor=CENTER)
     Button(userScreen,text='Sign in', bd=3, relief='raised', font=("system", 10), height="2", width="30",
            command=UserAuthAndOp).pack(pady=12, anchor=CENTER)
     Button(userScreen,text='Sign up', bd=3, relief='raised', font=('system', 10), height="2", width="30", #command=createUser
