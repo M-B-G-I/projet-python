@@ -30,4 +30,3 @@ def list():
         f.close()
     Button(text='Browse',bd=3,relief='raised',font=("system", 10),height="2",width="30",command=print(v.get())).pack(pady=12,anchor=CENTER)
     listWindow.mainloop()
-list()
