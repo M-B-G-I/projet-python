@@ -2,9 +2,10 @@ from tkinter import*
 from tkinter import messagebox
 def apply():
     import csv
-    with open('addApp.csv', 'w', newline='') as file:
+    with open('addApp.csv', 'a', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["ID card", "Name", "address","phone number","university degree","experience","skills"])
+        writing = csv.DictWriter(file, fieldnames=['ID','Name','address','phone number','university degree','experience','skills'], delimiter=',')
+        writing.writeheader()
         writer.writerow([E1.get(),E2.get(),E3.get(),E4.get(),E5.get(),E6.get(),E7.get()])
         msg = messagebox.showinfo("add application","your application has been added")
 

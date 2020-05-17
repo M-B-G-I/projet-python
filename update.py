@@ -1,10 +1,27 @@
+from tkinter import *
+from tkinter import messagebox
+import csv
+def apply():
+    import csv
+    with open('addApp.csv', 'a', newline='') as file:
+        writer = csv.writer(file)
+        writing = csv.DictWriter(file, fieldnames=['ID','Name','address','phone number','university degree','experience','skills'], delimiter=',')
+        writing.writeheader()
+        writer.writerow([E8.get(),E2.get(),E3.get(),E4.get(),E5.get(),E6.get(),E7.get()])
+        msg = messagebox.showinfo("add application","your application has been added")
 def update():
-    id=e8.get()
+    global E2
+    global E3
+    global E4
+    global E5
+    global E6
+    global E7
+    id=E8.get()
     import csv
     with open('addApp.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            if row['ID card']==id:
+            if row['ID']==id:
                 main = Tk()
                 main.title("update")
                 L2= Label(main, text="name").grid(row=1, column=0)
@@ -34,12 +51,12 @@ def update():
                 B4= Button(main, text=" update ", command=apply).grid(row=7, column=1)
                 main.mainloop()
         
-def updJob():
-    main = Tk()
-    main.title("update")
-    L8= Label(main, text="ID card").grid(row=0, column=0)
-    E8 = Entry(main, bd=5)
-    E8.grid(row=0, column=1)
-    B3 = Button(main, text=" Update ", command=update).grid(row=1, column=1)
-    main.mainloop()
+
+main = Tk()
+main.title("update")
+L8= Label(main, text="ID").grid(row=0, column=0)
+E8 = Entry(main, bd=5)
+E8.grid(row=0, column=1)
+B3 = Button(main, text=" Update ", command=update).grid(row=1, column=1)
+main.mainloop()
 
