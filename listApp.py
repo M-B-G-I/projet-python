@@ -2,18 +2,12 @@ from tkinter import *
 import csv
 from tkinter import messagebox
 
-from addapplication import apply
-
-
 def list():
     global listWindow
     listWindow = Tk()
     listWindow.geometry('800x532')
     listWindow.title('Brows the list of job seekers')
-    '''Button(text='Administrator', bd=3, relief='raised', font=("system", 10), height="2", width="30",
-           command=AdminWindow).pack(pady=12, anchor=CENTER)
-    Button(text='Job Seeker', bd=3, relief='raised', font=('system', 10), height="2", width="30",
-           command=UserWindow).pack(pady=12, anchor=CENTER)'''
+
     try:
         f=open("Jobs.CSV",'r')
     except FileNotFoundError:
