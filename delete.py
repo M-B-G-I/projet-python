@@ -21,8 +21,11 @@ def ok():
     main.destroy()
     with open('jobs.csv', 'w') as writeFile:
         writer = csv.writer(writeFile)
+        writer.writerow(['ID','CompanyName','CompanyAddress','CompanyPhoneNumber','CompanyEmail','RequestedDegree','RequestedQualification','RequestedExperience','MissionDescription'])
         writer.writerows(lines)
 def deleteJob():
+    global main
+    global EI
     main = Tk()
     main.title("Delete")
     LI = Label(main, text="Job offer ID").grid(row=0, column=0)
