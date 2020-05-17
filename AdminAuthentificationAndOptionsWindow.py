@@ -18,7 +18,7 @@ def verif():
                 good=True
                 break
         f.close()
-        if good==False:
+        if good==True:
             msg = messagebox.showinfo('ok', "log in success")
             adminSigninScreen.destroy()
             # list of options
