@@ -26,10 +26,15 @@ def register():
     else:
         admins=csv.reader(f,delimiter=',')
         bad=False
-        for i in list(admins)[0:-1:2]:
-            if i[0]==username_info:
-                bad=True
-                break
+        for i in admins:
+            try:
+                x=i[0]
+            except:
+                continue
+            else:
+                if x == username_info:
+                    bad = True
+                    break
         f.close()
         if bad==False and len(username_info)>0 and len(password_info)>3:
             f = open("Administrators.CSV", 'a')
@@ -70,3 +75,4 @@ def createAdmin():
     Button(frame, text='Create', bd=1, relief='raised', font=("system", 5), width="6", command=register).grid(row=6,
                                                                                                               column=2,
                                                                                                               pady=12)
+    adminSignupScreen.mainloop()

@@ -16,7 +16,7 @@ def AdminWindow():
            command=AdminAuthAndOp).pack(pady=12, anchor=CENTER)
     Button(adminScreen,text='Sign up', bd=3, relief='raised', font=('system', 10), height="2", width="30",
            command=createAdmin).pack(pady=12, anchor=CENTER)
-
+    adminScreen.mainloop()
 def UserWindow():
     # Login Screen
     global userScreen
@@ -30,6 +30,7 @@ def UserWindow():
     Button(userScreen,text='Sign up', bd=3, relief='raised', font=('system', 10), height="2", width="30", #command=createUser
             ).pack(
         pady=12, anchor=CENTER)
+    userScreen.mainloop()
 
 # Main Prog
 def main():
