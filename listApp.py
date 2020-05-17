@@ -11,7 +11,7 @@ def list():
     try:
         f=open("Jobs.CSV",'r')
     except FileNotFoundError:
-        msg = messagebox.showinfo('Error', "Create an offer then Retry")
+        msg = messagebox.showinfo('Error', "Add Job Offer then Retry")
         listWindow.destroy()
     else:
         jobs=csv.DictReader(f,delimiter=',')
