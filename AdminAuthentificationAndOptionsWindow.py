@@ -9,7 +9,7 @@ def verif():
         f = open("Administrators.CSV", 'r')
     except FileNotFoundError:
         msg = messagebox.showinfo('Error', "Create an account then Retry")
-        adminSigninScree.destroy()
+        adminSigninScreen.destroy()
     else:
         admins=csv.reader(f,delimiter=',')
         good=False
@@ -20,7 +20,7 @@ def verif():
         f.close()
         if good==False:
             msg = messagebox.showinfo('ok', "log in success")
-            adminSigninScree.destroy()
+            adminSigninScreen.destroy()
             # list of options
         else:
             enteredName.delete(0, END)
@@ -29,7 +29,7 @@ def verif():
 
 
 def AdminAuthAndOp():
-    global adminSigninScree
+    global adminSigninScreen
     adminSigninScreen = Tk()
     adminSigninScreen.geometry('335x125')
     adminSigninScreen.title('Administrator Sign in')
