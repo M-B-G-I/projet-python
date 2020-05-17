@@ -22,10 +22,13 @@ def ok():
     with open('jobs.csv', 'w') as writeFile:
         writer = csv.writer(writeFile)
         writer.writerows(lines)
-main = Tk()
-main.title("Delete")
-LI= Label(main, text="Job offer ID").grid(row=0, column=0)
-EI = Entry(main, bd=5)
-EI.grid(row=0, column=1)
-B = Button(main, text=" Ok ", command=ok).grid(row=1, column=1)
-main.mainloop()
+def deleteJob():
+    main = Tk()
+    main.title("Delete")
+    LI = Label(main, text="Job offer ID").grid(row=0, column=0)
+    EI = Entry(main, bd=5)
+    EI.grid(row=0, column=1)
+    B = Button(main, text=" Ok ", command=ok).grid(row=1, column=1)
+    main.mainloop()
+
+

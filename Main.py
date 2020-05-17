@@ -2,8 +2,7 @@ from tkinter import *
 from AdminAuthentificationAndOptionsWindow import AdminAuthAndOp
 from UserAuthentificationAndOptionsWindow import UserAuthAndOp
 from createAdmin import createAdmin
-#from createUser import createUser
-
+from createUser import createUser
 def AdminWindow():
     # Login Screen
     global adminScreen
@@ -27,7 +26,7 @@ def UserWindow():
     LabelFrame(userScreen,text='Hello User',bg='grey',font=('veranda',30),height="100", width="2000",).pack(anchor=CENTER)
     Button(userScreen,text='Sign in', bd=3, relief='raised', font=("system", 10), height="2", width="30",
            command=UserAuthAndOp).pack(pady=12, anchor=CENTER)
-    Button(userScreen,text='Sign up', bd=3, relief='raised', font=('system', 10), height="2", width="30", #command=createUser
+    Button(userScreen,text='Sign up', bd=3, relief='raised', font=('system', 10), height="2", width="30", command=createUser
             ).pack(
         pady=12, anchor=CENTER)
     userScreen.mainloop()
