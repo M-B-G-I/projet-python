@@ -35,12 +35,12 @@ def verif():
             optionsScreen.title("Administrators Options")
             LabelFrame(optionsScreen, text='Services', bg='grey', font=('veranda', 30), height="100",
                        width="2000", ).pack(anchor=CENTER)
-            Button(optionsScreen, text='Job Seekers List', bd=3, relief='raised', font=("system", 10), height="2", width="11",
+            Button(optionsScreen, text='Job Seekers List', bd=3, relief='raised', font=("system", 10), height="2", width="17",
                    command=list).pack(pady=12, anchor=CENTER)
-            Button(optionsScreen, text='Add Job offer', bd=3, relief='raised', font=('system', 10), height="2", width="13",
+            Button(optionsScreen, text='Add Job offer', bd=3, relief='raised', font=('system', 10), height="2", width="17",
                    command=addJob).pack(pady=12, anchor=CENTER)
             Button(optionsScreen, text='Update Job offer', bd=3, relief='raised', font=('system', 10), height="2",
-                   width="16", command=updateJob).pack(pady=12, anchor=CENTER)
+                   width="17", command=updateJob).pack(pady=12, anchor=CENTER)
             Button(optionsScreen, text='Delete Job offer', bd=3, relief='raised', font=('system', 10), height="2",
                    width="17", command=deleteJob).pack(pady=12, anchor=CENTER)
             optionsScreen.mainloop()

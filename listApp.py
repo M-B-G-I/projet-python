@@ -23,6 +23,7 @@ def list():
                 continue
             else:
                 listeOptions.append(i ['ID'])
+        listeOptions=tuple(listeOptions)
         v = StringVar()
         v.set(listeOptions [0])
         om = om = OptionMenu(listWindow, v, *listeOptions)
@@ -30,3 +31,4 @@ def list():
         f.close()
     Button(text='Browse',bd=3,relief='raised',font=("system", 10),height="2",width="30",command=print(v.get())).pack(pady=12,anchor=CENTER)
     listWindow.mainloop()
+#list()
