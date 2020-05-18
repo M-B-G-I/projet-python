@@ -1,61 +1,151 @@
 from tkinter import *
 from tkinter import messagebox
 import csv
-def apply():
-    import csv
-    with open('Applications.CSV', 'a', newline='') as file:
-        writer = csv.writer(file)
-        writing = csv.DictWriter(file, fieldnames=['ID','Name','address','phone number','university degree','experience','skills'], delimiter=',')
+
+def save():
+        f=open('Users/'+user+'.CSV', 'r')
+        a=csv.DictReader(f,delimiter=',')
+        a=list(a)
+        indice=0
+        for i in a:
+            try:
+                id=i['ID']
+            except:
+                continue
+            else:
+                if id==info['ID']:
+                    a[indice]={'ID': info['ID'], 'Name': UserName.get(), 'Address': UserAddress.get(),
+                              'PhoneNumber': UserNumber.get(), 'Email': UserEmail.get(),
+                              'Degree': Userdegree.get(), 'Qualification': UserExperience.get("1.0", END),
+                              'Experience': UserSkills.get("1.0", END)}
+            indice+=1
+        f.close()
+        f = open('Users/'+user+'.CSV', 'w')
+        writing = csv.DictWriter(f, fieldnames=['Name','address','phone number','university degree','experience','skills'], delimiter=',')
         writing.writeheader()
-        writer.writerow([E8.get(),E2.get(),E3.get(),E4.get(),E5.get(),E6.get(),E7.get()])
-        msg = messagebox.showinfo("add application","your application has been added")
+        for i in a:
+            writing.writerow(i)
+        f.close()
+        msg2 = messagebox.showinfo('Ok', "Job application added successfully")
+        JobApplicationWindow.destroy()
+
+
 def update():
-    global E2
-    global E3
-    global E4
-    global E5
-    global E6
-    global E7
-    id=E8.get()
-    import csv
-    with open('Applications.CSV', newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
+        global JobApplicationWindow
+        JobApplicationWindow = Tk()
+        JobApplicationWindow.geometry('600x700+400+0')
+        JobApplicationWindow.title('Update job offer')
+        frame = LabelFrame(JobApplicationWindow, text='Update the convenient information about the job which ID=' + info['ID'], font=('system'))
+        frame.pack()
+
+        # creation
+        global UserName
+        global UserAddress
+        global UserNumber
+        global UserEmail
+        global Userdegree
+        global UserExperience
+        global UserSkills
+
+
+        UserName=StringVar()
+        UserAddress=StringVar()
+        UserNumber=StringVar()
+        UserEmail=StringVar()
+        Userdegree=StringVar()
+        UserExperience=StringVar()
+        UserSkills=StringVar()
+
+
+        Label(frame, text='Your Name').pack()
+        UserName = Entry(frame, font=('varinda', 8, 'italic'))
+        UserName.insert(END, info ['Name'])
+        UserName.pack()
+
+        Label(frame, text='Your Address').pack()
+        UserAddress = Entry(frame, font=('varinda', 8, 'italic'))
+        UserAddress.insert(END, info['Address'])
+        UserAddress.pack()
+
+        Label(frame, text='Your Phone Number').pack()
+        UserNumber = Entry(frame, font=('varinda', 8, 'italic'))
+        UserNumber.insert(END, info['PhoneNumber'])
+        UserNumber.pack()
+
+        Label(frame, text='Your Email').pack()
+        UserEmail = Entry(frame, font=('varinda', 8, 'italic'))
+        UserEmail.insert(END, info['Email'])
+        UserEmail.pack()
+
+        Label(frame, text='Your Degree').pack()
+        Userdegree = Entry(frame, font=('varinda', 8, 'italic'))
+        Userdegree.insert(END, info ['Degree'])
+        Userdegree.pack()
+
+        Label(frame, text='Your Qualification').pack()
+        UserExperience = Text(frame, height=6, width=22, font=('varinda', 8, 'italic'))
+        UserExperience.insert(END, info ['Qualification'])
+        UserExperience.pack()
+
+        Label(frame, text='Your Experience').pack()
+        UserSkills = Text(frame, height=6, width=22, font=('varinda', 8, 'italic'))
+        UserSkills.insert(END, info['Experience'])
+        UserSkills.pack()
+
+
+        Label(frame, text='Use this data to update your job',font=('system')).pack()
+        Button(frame, text='Update', bd=1, relief='raised', font=("system", 5), width="6", command=save).pack()
+        JobApplicationWindow.mainloop()
+
+def updateJob():
+    global admin
+    Code = AppIdToBeUpdated.get()
+    f = open('Users/ConnectedUsers.txt', 'r')
+    user= f.read()
+    f.close()
+    try:
+        f = open('Users/'+user+'.CSV', 'r')
+    except:
+        msg2 = messagebox.showinfo('Error 403', "Your are not allowed to be here! CREATE AN ACCOUNT then Retry.")
+    else:
+        reader = csv.DictReader(f,delimiter=",")
+        exist = False
         for row in reader:
-            if row['ID']==id:
-                main = Tk()
-                main.title("update")
-                L2= Label(main, text="name").grid(row=1, column=0)
-                E2 = Entry(main, bd=5)
-                E2.grid(row=1, column=1)
-                row['name']=E2.get()
-                L3= Label(main, text="address").grid(row=2, column=0)
-                E3 = Entry(main, bd=5)
-                E3.grid(row=2, column=1)
-                row['address']=E3.get()
-                L4= Label(main, text="phone number").grid(row=3, column=0)
-                E4 = Entry(main, bd=5)
-                E4.grid(row=3, column=1)
-                row['phone number']=E4.get()
-                L5= Label(main, text="university degree").grid(row=4, column=0)
-                E5 = Entry(main, bd=5)
-                E5.grid(row=4, column=1)
-                row['university degree']=E5.get()
-                L6= Label(main, text="professional experience").grid(row=5, column=0)
-                E6 = Entry(main, bd=5)
-                E6.grid(row=5, column=1)
-                row['professional experience']=E6.get()
-                L7= Label(main, text="skills").grid(row=6, column=0)
-                E7 = Entry(main, bd=5)
-                E7.grid(row=6,column=1)
-                row['skills']=E7.get()
-                B4= Button(main, text=" update ", command=apply).grid(row=7, column=1)
-                main.mainloop()
-def updateApp():
+            try:
+                x=row['ID']
+            except:
+                continue
+            else:
+                if Code == x:
+                    exist = True
+                    # Copier coller aala mtaa l add job
+                    global info
+                    info=row
+                    update()
+                if exist == False:
+                    AppIdToBeUpdated.delete(0, END)
+                    msg = messagebox.showinfo('Error', "non-existent Job ID, Retry!")
+        f.close()
+
+
+
+def updateWindow():
+    global main
+    global AppIdToBeUpdated
     main = Tk()
-    main.title("update")
-    L8 = Label(main, text="ID").grid(row=0, column=0)
-    E8 = Entry(main, bd=5)
-    E8.grid(row=0, column=1)
-    B3 = Button(main, text=" Update ", command=update).grid(row=1, column=1)
+    main.geometry('335x115')
+    main.title("Delete")
+    frame = LabelFrame(main, text='Enter the ID of the job offer to be Updated')
+    frame.grid(row=1, column=1, columnspan=10, rowspan=10)
+
+    Label(frame, text=' ID').grid(row=2, column=1, sticky=W, pady=3)
+    AppIdToBeUpdated = Entry(frame)
+    AppIdToBeUpdated.grid(row=2, column=2, pady=3)
+
+    Label(frame, text='Are you sure to Update this Application?').grid(row=6, column=1, sticky=W)
+    B = Button(frame, text='Update', bd=1, relief='raised', font=("system", 5), width="6", command=updateJob).grid(row=6,
+                                                                                                            column=2,
+                                                                                                            pady=12)
     main.mainloop()
 
+updateWindow()

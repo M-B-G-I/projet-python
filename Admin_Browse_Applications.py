@@ -59,4 +59,4 @@ def list():
         enteredID=Entry(listWindow).pack(pady=12,anchor=CENTER)
         Button(listWindow,text='Browse',command=listing).pack(pady=12,anchor=CENTER)
     listWindow.mainloop()
-#list()
+list()

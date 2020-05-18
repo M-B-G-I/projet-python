@@ -1,86 +1,25 @@
 from tkinter import *
 import csv
 from tkinter import messagebox
-#from searchJob import searchWindow
-def search():
-    global liste
-    key_info=key.get()
-    try:
-        f=open('Jobs.CSV','r')
-    except:
-        msg=messagebox.showinfo('Error','there is no job offers')
-    else:
-        reader=csv.DictReader(f,delimiter=',')
-        liste=list()
-        if len(key_info) >= 3:
-            for i in reader:
-                try:
-                    x = i['ID']
-                    y = i['CompanyAddress']
-                    z = i['RequestedDegree']
-                    p = i['RequestedQualification']
-                    u = i['RequestedExperience']
-                    g = i['MissionDescription']
-                except:
-                    continue
-                else:
+from Admin_Update_Job_Offer import updateWindow
+from Admin_Browse_Applications import list
+from User_Browse_Job_Offers import list
+from Admin_Add_Job_Offer import addJob
+from Admin_Delete_Job_Offer import deleteJob
 
-                    if x == key_info or key_info in y or key_info in z or key_info in p or key_info in u or key_info in g:
-                        liste.append(i)
-                    if len(liste)==0:
-                        msg1 = messagebox.showinfo('Error','no job matches your demand.Better luck next time')
-
-                    else:
-                        frame2 = LabelFrame(searchJobWindow, text='Search Results', bg='grey', font=('veranda', 30),
-                                            height="100",
-                                            width="2000", ).pack(anchor=CENTER)
-                        Label(frame2,
-                              text='Jobs which ID equal to your input OR Location/Domain Contain your input').pack()
-                        r = Text(frame2, height=6, width=1000, font=('varinda', 8, 'italic'))
-                        r.insert(END, liste)
-                        r.pack()
-
-        else:
-
-              msg1=messagebox.showinfo('Error','invalid search key.Please use a search key that contains more than 2 characters ')
-
-        f.close()
-
-
-
-def searchWindow():
-    global searchJobWindow
-    global key
-    searchJobWindow = Tk()
-    searchJobWindow.geometry('1024x681')
-    searchJobWindow.title('Search for a Job')
-    searchJobWindow.pack_propagate()
-    frame8=LabelFrame(searchJobWindow, text='Search for a Job', bg='grey', font=('veranda', 30), height="100",
-               width="2000", ).pack(anchor=CENTER)
-    Label(frame8,text='Fill in the blank the ID OR the Location OR the Domain of the Job you are searching for(length>2)').pack()
-    key=Entry(frame8)
-    key.pack()
-    Button(frame8, text='Search', command=search).pack()
-
-    searchJobWindow.mainloop()
-
-def ListAppliedJobs():
-    AppliedJobsListWindow = Tk()
-    AppliedJobsListWindow.geometry('335x125')
-    AppliedJobsListWindow.title('The Jobs you are applied for')
-    frame = LabelFrame(AppliedJobsListWindow, text='The list of Jobs IDs which you are applied for')
-    frame.grid(row=1, column=1, columnspan=10, rowspan=10)
-    AppliedJobsListWindow.mainloop()
 
 def verif():
-    username_info = enteredName.get()
+    username_info = enteredName.get().strip()
     password_info = enteredPassword.get()
     try:
-        f = open("Administrators/Administrators.CSV", 'r')
+        ch="Users/"+username_info+'.CSV'
+        f=open(ch,'r')
     except FileNotFoundError:
         msg = messagebox.showinfo('Error', "Create an account then Retry")
-        userSigninScreen.destroy()
+        UserSigninScreen.destroy()
     else:
+        f.close()
+        f = open("Users/Users.CSV", 'r')
         users=csv.reader(f,delimiter=',')
         good=False
         for i in users:
@@ -94,29 +33,34 @@ def verif():
                     break
         f.close()
         if good==True:
-            userSigninScreen.destroy()
+            UserSigninScreen.destroy()
             # list of options
-            userOptionsScreen=Tk()
-            userOptionsScreen.geometry("1024x681")
-            userOptionsScreen.title("User Options")
-            LabelFrame(userOptionsScreen, text='Services', bg='grey', font=('veranda', 30), height="100",
+            optionsScreen=Tk()
+            optionsScreen.geometry("1024x681")
+            optionsScreen.title("Users Options")
+            LabelFrame(optionsScreen, text='Services', bg='grey', font=('veranda', 30), height="100",
                        width="2000", ).pack(anchor=CENTER)
-            Button(userOptionsScreen, text='Search Job Offer', bd=3, relief='raised', font=("system", 10), height="2", width="24",
-                   command=searchWindow).pack(pady=12, anchor=CENTER)
-            Button(userOptionsScreen, text='The Jobs you applied for', bd=3, relief='raised', font=('system', 10), height="2",
-                   width="24", command=ListAppliedJobs).pack(pady=12, anchor=CENTER)
-            userOptionsScreen.mainloop()
+            Button(optionsScreen, text='Search for job offers', bd=3, relief='raised', font=('system', 10), height="2",
+                   width="17", command=list).pack(pady=12, anchor=CENTER)
+            Button(optionsScreen, text='jobs you already applied for', bd=3, relief='raised', font=('system', 10), height="2",
+                   width="17", command=list).pack(pady=12, anchor=CENTER)
+
+            f=open('Users/ConnectedUsers.txt', 'w')
+            f.write(username_info)
+            f.close()
+
+            optionsScreen.mainloop()
         else:
             msg = messagebox.showinfo('Error 403', "Invalid username or password Retry")
             enteredName.delete(0,END)
             enteredPassword.delete(0,END)
 
 def UserAuthAndOp():
-    global userSigninScreen
-    userSigninScreen = Tk()
-    userSigninScreen.geometry('335x125')
-    userSigninScreen.title('User Sign in')
-    frame = LabelFrame(userSigninScreen, text='Enter your Username and your Password')
+    global UserSigninScreen
+    UserSigninScreen = Tk()
+    UserSigninScreen.geometry('335x125')
+    UserSigninScreen.title('Users Sign in')
+    frame = LabelFrame(UserSigninScreen, text='Enter your Username and your Password')
     frame.grid(row=1, column=1, columnspan=10, rowspan=10)
 
     # creation
@@ -135,5 +79,4 @@ def UserAuthAndOp():
     Button(frame, text='Log in', bd=1, relief='raised', font=("system", 5), width="6", command=verif).grid(row=6,
                                                                                                               column=2,
                                                                                                               pady=12)
-    userSigninScreen.mainloop()
-#UserAuthAndOp()
+    UserSigninScreen.mainloop()
