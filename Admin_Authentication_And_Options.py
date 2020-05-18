@@ -1,10 +1,10 @@
 from tkinter import *
 import csv
 from tkinter import messagebox
-from updateJob import updateWindow
-from listApp import list
-from addJob import addJob
-from delete import deleteJob
+from Admin_Update_Job_Offer import updateWindow
+from Admin_Browse_Applications import list
+from Admin_Add_Job_Offer import addJob
+from Admin_Delete_Job_Offer import deleteJob
 
 def verif():
     username_info = enteredName.get()
