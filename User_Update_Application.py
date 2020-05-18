@@ -3,7 +3,7 @@ from tkinter import messagebox
 import csv
 def apply():
     import csv
-    with open('addApp.csv', 'a', newline='') as file:
+    with open('Applications.CSV', 'a', newline='') as file:
         writer = csv.writer(file)
         writing = csv.DictWriter(file, fieldnames=['ID','Name','address','phone number','university degree','experience','skills'], delimiter=',')
         writing.writeheader()
@@ -18,7 +18,7 @@ def update():
     global E7
     id=E8.get()
     import csv
-    with open('addApp.csv', newline='') as csvfile:
+    with open('Applications.CSV', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             if row['ID']==id:

@@ -2,7 +2,7 @@ from tkinter import*
 from tkinter import messagebox
 def apply():
     import csv
-    with open('addApp.csv', 'a', newline='') as file:
+    with open('Applications.CSV', 'a', newline='') as file:
         writer = csv.writer(file)
         writing = csv.DictWriter(file, fieldnames=['ID','Name','address','phone number','university degree','experience','skills'], delimiter=',')
         writing.writeheader()
