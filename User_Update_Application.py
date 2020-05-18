@@ -98,7 +98,7 @@ def update():
         JobApplicationWindow.mainloop()
 
 def updateJob():
-    global admin
+    global user
     Code = AppIdToBeUpdated.get()
     f = open('Users/ConnectedUsers.txt', 'r')
     user= f.read()

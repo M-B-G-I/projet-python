@@ -2,7 +2,7 @@ from tkinter import *
 import csv
 from tkinter import messagebox
 from Admin_Update_Job_Offer import updateWindow
-from Admin_Browse_Applications import list
+from Admin_Browse_Applications import listApp
 from Admin_Add_Job_Offer import addJob
 from Admin_Delete_Job_Offer import deleteJob
 
@@ -43,7 +43,7 @@ def verif():
             Button(optionsScreen, text='Update Job offer', bd=3, relief='raised', font=('system', 10), height="2",
                    width="17", command=updateWindow).pack(pady=12, anchor=CENTER)
             Button(optionsScreen, text='Job Seekers List', bd=3, relief='raised', font=("system", 10), height="2", width="17",
-                   command=list).pack(pady=12, anchor=CENTER)
+                   command=listApp).pack(pady=12, anchor=CENTER)
             Button(optionsScreen, text='Delete Job offer', bd=3, relief='raised', font=('system', 10), height="2",
                    width="17", command=deleteJob).pack(pady=12, anchor=CENTER)
 

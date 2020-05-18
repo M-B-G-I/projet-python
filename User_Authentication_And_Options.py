@@ -2,8 +2,8 @@ from tkinter import *
 import csv
 from tkinter import messagebox
 from Admin_Update_Job_Offer import updateWindow
-from Admin_Browse_Applications import list
-from User_Browse_Job_Offers import list
+from Admin_Browse_Applications import listApp
+#from User_Browse_Job_Offers import list
 from Admin_Add_Job_Offer import addJob
 from Admin_Delete_Job_Offer import deleteJob
 

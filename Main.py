@@ -3,7 +3,6 @@ from Admin_Authentication_And_Options import AdminAuthAndOp
 from User_Authentication_And_Options import UserAuthAndOp
 from Admin_Create_Account import createAdmin
 from User_Create_Account import createUser
-
 def AdminWindow():
     # Login Screen
     global adminScreen
