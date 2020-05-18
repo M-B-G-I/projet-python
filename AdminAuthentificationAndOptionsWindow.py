@@ -44,6 +44,10 @@ def verif():
             Button(optionsScreen, text='Delete Job offer', bd=3, relief='raised', font=('system', 10), height="2",
                    width="17", command=deleteJob).pack(pady=12, anchor=CENTER)
             optionsScreen.mainloop()
+        else:
+            msg = messagebox.showinfo('Error 403', "Invalid username or password Retry")
+            enteredName.delete(0,END)
+            enteredPassword.delete(0,END)
 
 def AdminAuthAndOp():
     global adminSigninScreen

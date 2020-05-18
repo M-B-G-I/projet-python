@@ -57,16 +57,6 @@ def addJob():
         frame = LabelFrame(JobOfferWindow, text='Fill in the blanks the convenient job information',font=('system'))
         frame.pack()
 
-        scrollbar = Scrollbar(JobOfferWindow)
-        scrollbar.pack(side=RIGHT, fill=Y)
-
-        listbox = Listbox(JobOfferWindow, yscrollcommand=scrollbar.set)
-        for i in range(1000):
-            listbox.insert(END, str(i))
-        listbox.pack(side=LEFT, fill=BOTH)
-
-        scrollbar.config(command=listbox.yview)
-
         # creation
         global id
         global cname
@@ -128,4 +118,3 @@ def addJob():
         Label(frame, text='Use this data to create your account',font=('system')).pack()
         Button(frame, text='Create', bd=1, relief='raised', font=("system", 5), width="6", command=save).pack()
         JobOfferWindow.mainloop()
-addJob()
