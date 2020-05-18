@@ -7,7 +7,7 @@ def ok():
     txt=EI.get()
     lines = list()
     try:
-        f=open('jobs.csv', 'r')
+        f=open('Jobs.CSV', 'r')
     except:
         msg1 = messagebox.showinfo("Error", "Create job offer then Retry")
     else:
@@ -25,7 +25,7 @@ def ok():
             f.close()
     main.destroy()
 
-    f=open('jobs.csv', 'w')
+    f=open('Jobs.CSV', 'w')
     writing = csv.DictWriter(f, fieldnames=['ID', 'CompanyName', 'CompanyAddress', 'CompanyPhoneNumber', 'CompanyEmail', 'RequestedDegree',
                      'RequestedQualification', 'RequestedExperience', 'MissionDescription'], delimiter=',')
     writing.writeheader()

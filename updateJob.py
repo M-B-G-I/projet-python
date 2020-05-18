@@ -3,7 +3,7 @@ from tkinter import messagebox
 import csv
 
 def save():
-        f=open("Jobs.CSV",'r')
+        f=open("Jobs.CSV", 'r')
         a=csv.DictReader(f,delimiter=',')
         a=list(a)
         indice=0

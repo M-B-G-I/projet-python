@@ -5,9 +5,9 @@ from tkinter import Text, Tk
 
 def save():
     try:
-        f=open("Jobs.CSV",'r')
+        f=open("Jobs.CSV", 'r')
     except:
-        f = open('jobs.csv', 'w')
+        f = open('Jobs.CSV', 'w')
         if len(id.get())>=1:
             writing = csv.DictWriter(f, fieldnames=['ID', 'CompanyName', 'CompanyAddress', 'CompanyPhoneNumber',
                                                     'CompanyEmail', 'RequestedDegree', 'RequestedQualification',

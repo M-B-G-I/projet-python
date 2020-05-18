@@ -9,7 +9,7 @@ def list():
     listWindow.title('Brows the list of job seekers')
 
     try:
-        f=open("Jobs.CSV",'r')
+        f=open("Jobs.CSV", 'r')
     except FileNotFoundError:
         msg = messagebox.showinfo('Error', "Add Job Offer then Retry")
         listWindow.destroy()
