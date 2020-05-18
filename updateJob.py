@@ -152,4 +152,4 @@ def updateWindow():
                                                                                                             pady=12)
     main.mainloop()
 
-updateWindow()
+#updateWindow()
