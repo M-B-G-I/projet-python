@@ -10,7 +10,7 @@ def verif():
     username_info = enteredName.get()
     password_info = enteredPassword.get()
     try:
-        f = open("Administrators.CSV", 'r')
+        f = open("Administrators/Administrators.CSV", 'r')
     except FileNotFoundError:
         msg = messagebox.showinfo('Error', "Create an account then Retry")
         adminSigninScreen.destroy()

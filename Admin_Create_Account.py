@@ -7,10 +7,10 @@ def register():
     username_info = enteredName.get()
     password_info = enteredPassword.get()
     try:
-        f = open("Administrators.CSV", 'r')
+        f = open("Administrators/Administrators.CSV", 'r')
     except FileNotFoundError:
         if len(username_info)>0 and len(password_info)>3:
-            f = open("Administrators.CSV", "w")
+            f = open("Administrators/Administrators.CSV", "w")
             writing = csv.DictWriter(f, fieldnames=['AdminName', 'AdminPassword'], delimiter=',')
             writing.writeheader()
             writing.writerow({'AdminName': username_info, 'AdminPassword': password_info})
@@ -37,7 +37,7 @@ def register():
                     break
         f.close()
         if bad==False and len(username_info)>0 and len(password_info)>3:
-            f = open("Administrators.CSV", 'a')
+            f = open("Administrators/Administrators.CSV", 'a')
             writing = csv.DictWriter(f, fieldnames=['AdminName', 'AdminPassword'], delimiter=',')
             writing.writerow({'AdminName': username_info, 'AdminPassword': password_info})
             f.close()
