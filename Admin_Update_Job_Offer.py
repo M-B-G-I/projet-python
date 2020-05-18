@@ -3,7 +3,7 @@ from tkinter import messagebox
 import csv
 
 def save():
-        f=open("Jobs.CSV", 'r')
+        f=open('Administrators/'+admin+'.CSV', 'r')
         a=csv.DictReader(f,delimiter=',')
         a=list(a)
         indice=0
@@ -20,7 +20,7 @@ def save():
                               'RequestedExperience': rexp.get("1.0",END), 'MissionDescription': t.get("1.0",END)}
             indice+=1
         f.close()
-        f = open('Jobs.CSV', 'w')
+        f = open('Administrators/'+admin+'.CSV', 'w')
         writing = csv.DictWriter(f, fieldnames=['ID', 'CompanyName', 'CompanyAddress', 'CompanyPhoneNumber',
                                                 'CompanyEmail', 'RequestedDegree', 'RequestedQualification',
                                                 'RequestedExperience', 'MissionDescription'], delimiter=',')
@@ -106,11 +106,15 @@ def update():
         JobOfferWindow.mainloop()
 
 def updateJob():
-    Code = EI.get()
+    global admin
+    Code = JobIdToBeUpdated.get()
+    f = open('Administrators/ConnectedAdmin.txt', 'r')
+    admin = f.read()
+    f.close()
     try:
-        f = open("Jobs.CSV", 'r')
+        f = open('Administrators/'+admin+'.CSV', 'r')
     except:
-        msg1 = messagebox.showinfo("Error", "Create job offer then Retry")
+        msg2 = messagebox.showinfo('Error 403', "Your are not allowed to be here! CREATE AN ACCOUNT then Retry.")
     else:
         reader = csv.DictReader(f,delimiter=",")
         exist = False
@@ -127,7 +131,7 @@ def updateJob():
                     info=row
                     update()
                 if exist == False:
-                    EI.delete(0, END)
+                    JobIdToBeUpdated.delete(0, END)
                     msg = messagebox.showinfo('Error', "non-existent Job ID, Retry!")
         f.close()
 
@@ -135,7 +139,7 @@ def updateJob():
 
 def updateWindow():
     global main
-    global EI
+    global JobIdToBeUpdated
     main = Tk()
     main.geometry('335x115')
     main.title("Delete")
@@ -143,8 +147,8 @@ def updateWindow():
     frame.grid(row=1, column=1, columnspan=10, rowspan=10)
 
     Label(frame, text=' ID').grid(row=2, column=1, sticky=W, pady=3)
-    EI = Entry(frame)
-    EI.grid(row=2, column=2, pady=3)
+    JobIdToBeUpdated = Entry(frame)
+    JobIdToBeUpdated.grid(row=2, column=2, pady=3)
 
     Label(frame, text='Are you sure to Update this job offer?').grid(row=6, column=1, sticky=W)
     B = Button(frame, text='Update', bd=1, relief='raised', font=("system", 5), width="6", command=updateJob).grid(row=6,

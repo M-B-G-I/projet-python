@@ -4,50 +4,27 @@ import csv
 from tkinter import Text, Tk
 
 def save():
+    f=open('Administrators/ConnectedAdmin.txt','r')
+    admin=f.read()
+    f.close()
     try:
-        f=open("Jobs.CSV", 'r')
+        f=open('Administrators/'+admin+'.CSV', 'r')
     except:
-        f = open('Jobs.CSV', 'w')
-        if len(id.get())>=1:
-            writing = csv.DictWriter(f, fieldnames=['ID', 'CompanyName', 'CompanyAddress', 'CompanyPhoneNumber',
-                                                    'CompanyEmail', 'RequestedDegree', 'RequestedQualification',
-                                                    'RequestedExperience', 'MissionDescription'], delimiter=',')
-            writing.writeheader()
-            writing.writerow({'ID': id.get(), 'CompanyName': cname.get(), 'CompanyAddress': caddress.get(),
-                              'CompanyPhoneNumber': cnumber.get(), 'CompanyEmail': cemail.get(),
-                              'RequestedDegree': rdg.get(), 'RequestedQualification': rqf.get("1.0",END),
-                              'RequestedExperience': rexp.get("1.0",END), 'MissionDescription': t.get("1.0",END)})
-            msg2 = messagebox.showinfo('Ok', "Job offer added successfully")
-            JobOfferWindow.destroy()
-        else:
-            msg = messagebox.showinfo('Error', "Invalid ID, Retry")
-            id.delete(0, END)
-        f.close()
-
+        msg2 = messagebox.showinfo('Error 403', "Your are not allowed to be here! CREATE AN ACCOUNT then Retry.")
     else:
-        a=csv.DictReader(f,delimiter=',')
-        bad=False
-        for i in a:
-            if i['ID']==id.get():
-                bad=True
-                break
         f.close()
-        if bad==False and len(id.get())>=1:
-            f = open('Jobs.CSV', 'a')
+        f = open('Administrators/'+admin+'.CSV', 'a')
+        if len(id.get()) >= 1:
             writing = csv.DictWriter(f, fieldnames=['ID', 'CompanyName', 'CompanyAddress', 'CompanyPhoneNumber',
                                                     'CompanyEmail', 'RequestedDegree', 'RequestedQualification',
                                                     'RequestedExperience', 'MissionDescription'], delimiter=',')
             writing.writerow({'ID': id.get(), 'CompanyName': cname.get(), 'CompanyAddress': caddress.get(),
                               'CompanyPhoneNumber': cnumber.get(), 'CompanyEmail': cemail.get(),
-                              'RequestedDegree': rdg.get(), 'RequestedQualification': rqf.get("1.0",END),
-                              'RequestedExperience': rexp.get("1.0",END), 'MissionDescription': t.get("1.0",END)})
-            f.close()
+                              'RequestedDegree': rdg.get(), 'RequestedQualification': rqf.get("1.0", END),
+                              'RequestedExperience': rexp.get("1.0", END), 'MissionDescription': t.get("1.0", END)})
             msg2 = messagebox.showinfo('Ok', "Job offer added successfully")
             JobOfferWindow.destroy()
-        else:
-            msg = messagebox.showinfo('Error', "Invalid ID, Retry")
-            id.delete(0, END)
-
+        f.close()
 
 def addJob():
         global JobOfferWindow

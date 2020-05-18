@@ -4,51 +4,33 @@ import csv
 
 
 def register():
-    username_info = enteredName.get()
+    username_info = enteredName.get().strip()
     password_info = enteredPassword.get()
     try:
-        f = open("Administrators/Administrators.CSV", 'r')
+        ch = "Administrators/"+username_info+".CSV"
+        f = open(ch, 'r')
     except FileNotFoundError:
         if len(username_info)>0 and len(password_info)>3:
-            f = open("Administrators/Administrators.CSV", "w")
+            f = open("Administrators/Administrators.CSV", "a")
             writing = csv.DictWriter(f, fieldnames=['AdminName', 'AdminPassword'], delimiter=',')
-            writing.writeheader()
             writing.writerow({'AdminName': username_info, 'AdminPassword': password_info})
             f.close()
-            enteredName.delete(0, END)
-            enteredPassword.delete(0, END)
+            f = open("Administrators/"+username_info+".CSV", 'w')
+            writing = csv.DictWriter(f, fieldnames=['ID', 'CompanyName', 'CompanyAddress', 'CompanyPhoneNumber',
+                                                    'CompanyEmail', 'RequestedDegree', 'RequestedQualification',
+                                                    'RequestedExperience', 'MissionDescription'], delimiter=',')
+            writing.writeheader()
             msg = messagebox.showinfo('ok', "registration success")
             adminSignupScreen.destroy()
+            f.close()
         else:
             enteredName.delete(0, END)
             enteredPassword.delete(0, END)
             msg = messagebox.showinfo('Error', "Invalid username or password, Retry")
     else:
-        admins=csv.reader(f,delimiter=',')
-        bad=False
-        for i in admins:
-            try:
-                x=i[0]
-            except:
-                continue
-            else:
-                if x == username_info:
-                    bad = True
-                    break
-        f.close()
-        if bad==False and len(username_info)>0 and len(password_info)>3:
-            f = open("Administrators/Administrators.CSV", 'a')
-            writing = csv.DictWriter(f, fieldnames=['AdminName', 'AdminPassword'], delimiter=',')
-            writing.writerow({'AdminName': username_info, 'AdminPassword': password_info})
-            f.close()
-            enteredName.delete(0, END)
-            enteredPassword.delete(0, END)
-            msg = messagebox.showinfo('ok', "registration success")
-            adminSignupScreen.destroy()
-        else:
-            enteredName.delete(0, END)
-            enteredPassword.delete(0, END)
-            msg = messagebox.showinfo('Error', "Invalid username or password, Retry")
+        enteredName.delete(0, END)
+        enteredPassword.delete(0, END)
+        msg = messagebox.showinfo('Error', "Existent username, Retry")
 
 
 def createAdmin():

@@ -7,9 +7,9 @@ def ok():
     txt=EI.get()
     lines = list()
     try:
-        f=open('Jobs.CSV', 'r')
+        f=open('Administrators/'+admin+'.CSV', 'r')
     except:
-        msg1 = messagebox.showinfo("Error", "Create job offer then Retry")
+        msg2 = messagebox.showinfo('Error 403', "Your are not allowed to be here! CREATE AN ACCOUNT then Retry.")
     else:
         reader = csv.DictReader(f,delimiter=',')
         remove=False
@@ -25,7 +25,7 @@ def ok():
             f.close()
     main.destroy()
 
-    f=open('Jobs.CSV', 'w')
+    f=open('Administrators/'+admin+'.CSV', 'w')
     writing = csv.DictWriter(f, fieldnames=['ID', 'CompanyName', 'CompanyAddress', 'CompanyPhoneNumber', 'CompanyEmail', 'RequestedDegree',
                      'RequestedQualification', 'RequestedExperience', 'MissionDescription'], delimiter=',')
     writing.writeheader()
@@ -33,6 +33,10 @@ def ok():
         writing.writerow(i)
     f.close()
 def deleteJob():
+    global admin
+    f = open('Administrators/ConnectedAdmin.txt', 'r')
+    admin = f.read()
+    f.close()
     global main
     global EI
     main = Tk()

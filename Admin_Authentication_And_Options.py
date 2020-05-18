@@ -7,14 +7,17 @@ from Admin_Add_Job_Offer import addJob
 from Admin_Delete_Job_Offer import deleteJob
 
 def verif():
-    username_info = enteredName.get()
+    username_info = enteredName.get().strip()
     password_info = enteredPassword.get()
     try:
-        f = open("Administrators/Administrators.CSV", 'r')
+        ch="Administrators/"+username_info+'.CSV'
+        f=open(ch,'r')
     except FileNotFoundError:
         msg = messagebox.showinfo('Error', "Create an account then Retry")
         adminSigninScreen.destroy()
     else:
+        f.close()
+        f = open("Administrators/Administrators.CSV", 'r')
         admins=csv.reader(f,delimiter=',')
         good=False
         for i in admins:
@@ -35,14 +38,19 @@ def verif():
             optionsScreen.title("Administrators Options")
             LabelFrame(optionsScreen, text='Services', bg='grey', font=('veranda', 30), height="100",
                        width="2000", ).pack(anchor=CENTER)
-            Button(optionsScreen, text='Job Seekers List', bd=3, relief='raised', font=("system", 10), height="2", width="17",
-                   command=list).pack(pady=12, anchor=CENTER)
-            Button(optionsScreen, text='Add Job offer', bd=3, relief='raised', font=('system', 10), height="2", width="17",
-                   command=addJob).pack(pady=12, anchor=CENTER)
+            Button(optionsScreen, text='Add Job offer', bd=3, relief='raised', font=('system', 10), height="2",
+                   width="17", command=addJob).pack(pady=12, anchor=CENTER)
             Button(optionsScreen, text='Update Job offer', bd=3, relief='raised', font=('system', 10), height="2",
                    width="17", command=updateWindow).pack(pady=12, anchor=CENTER)
+            Button(optionsScreen, text='Job Seekers List', bd=3, relief='raised', font=("system", 10), height="2", width="17",
+                   command=list).pack(pady=12, anchor=CENTER)
             Button(optionsScreen, text='Delete Job offer', bd=3, relief='raised', font=('system', 10), height="2",
                    width="17", command=deleteJob).pack(pady=12, anchor=CENTER)
+
+            f=open('Administrators/ConnectedAdmin.txt', 'w')
+            f.write(username_info)
+            f.close()
+
             optionsScreen.mainloop()
         else:
             msg = messagebox.showinfo('Error 403', "Invalid username or password Retry")

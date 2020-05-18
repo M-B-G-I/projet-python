@@ -2,17 +2,48 @@ from tkinter import *
 import csv
 from tkinter import messagebox
 
+def listing():
+    listee=list()
+    IDinfo=enteredID.get()
+    IDinfo=IDinfo.strip().upper()
+    if 'ALL' in IDinfo:
+        f=open('Users/Users.CSV','r')
+        aaa=csv.DictReader(f,delimiter=',')
+        aa=list(aaa)
+        f.close()
+        for i in aa:
+            g=open('aa','r')
+            listee.append(i)
+            g.close()
+    else:
+        f = open('Users/Users.CSV', 'r')
+        aaa = csv.DictReader(f, delimiter=',')
+        aa = list(aaa)
+        f.close()
+        for i in aa:
+            g = open('aa', 'r')
+            if i['JobID']==IDinfo:
+                listee.append(i)
+            g.close()
+    Label(listWindow, text='Requested Experience').pack()
+    tt = Text(listWindow, height=5, width=20, font=('varinda', 8, 'italic'))
+    tt.insert(END,listee)
+    tt.pack()
 def list():
+    # 'Administrators/'+admin+'.CSV'
+    global enteredID
+    global admin
+    f = open('Administrators/ConnectedAdmin.txt', 'r')
+    admin = f.read()
     global listWindow
     listWindow = Tk()
     listWindow.geometry('800x532')
     listWindow.title('Brows the list of job seekers')
 
     try:
-        f=open("Jobs.CSV", 'r')
-    except FileNotFoundError:
-        msg = messagebox.showinfo('Error', "Add Job Offer then Retry")
-        listWindow.destroy()
+        f=open("Administrators/"+admin+".CSV", 'r')
+    except:
+        msg2 = messagebox.showinfo('Error 403', "Your are not allowed to be here! CREATE AN ACCOUNT then Retry.")
     else:
         jobs=csv.DictReader(f,delimiter=',')
         listeOptions = ['All']
@@ -23,12 +54,9 @@ def list():
                 continue
             else:
                 listeOptions.append(i ['ID'])
-        listeOptions=tuple(listeOptions)
-        v = StringVar()
-        v.set(listeOptions [0])
-        om = OptionMenu(listWindow, v, *listeOptions)
-        om.pack()
         f.close()
-        Button(listWindow,text='Browse',bd=3,relief='raised',font=("system", 10),height="2",width="30",command=print(v.get())).pack(pady=12,anchor=CENTER)
+        Label(listWindow,text='Enter the ID of the Job which applications you need to list').pack(pady=12,anchor=CENTER)
+        enteredID=Entry(listWindow).pack(pady=12,anchor=CENTER)
+        Button(listWindow,text='Browse',command=listing).pack(pady=12,anchor=CENTER)
     listWindow.mainloop()
 #list()
