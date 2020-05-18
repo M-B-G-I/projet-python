@@ -50,13 +50,12 @@ def update():
                 row['skills']=E7.get()
                 B4= Button(main, text=" update ", command=apply).grid(row=7, column=1)
                 main.mainloop()
-        
-
-main = Tk()
-main.title("update")
-L8= Label(main, text="ID").grid(row=0, column=0)
-E8 = Entry(main, bd=5)
-E8.grid(row=0, column=1)
-B3 = Button(main, text=" Update ", command=update).grid(row=1, column=1)
-main.mainloop()
+def updateApp():
+    main = Tk()
+    main.title("update")
+    L8 = Label(main, text="ID").grid(row=0, column=0)
+    E8 = Entry(main, bd=5)
+    E8.grid(row=0, column=1)
+    B3 = Button(main, text=" Update ", command=update).grid(row=1, column=1)
+    main.mainloop()
 
