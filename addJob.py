@@ -52,7 +52,7 @@ def save():
 def addJob():
         global JobOfferWindow
         JobOfferWindow = Tk()
-        JobOfferWindow.geometry('320x600')
+        JobOfferWindow.geometry('320x600+400+0')
         JobOfferWindow.title('Create a job offer')
         frame = LabelFrame(JobOfferWindow, text='Fill in the blanks the convenient job information',font=('system'))
         frame.pack()
