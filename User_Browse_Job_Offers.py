@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter import messagebox
 import csv
+from User_Update_Application import updateWindow
+from User_Add_Application import addApplication
 
 def affich():
         id = enteredKey.get()
@@ -47,11 +49,17 @@ def affich():
                     UserBrowserResult = Tk()
                     UserBrowserResult.geometry('600x700+400+0')
                     UserBrowserResult.title('Update job offer')
-                    Label(UserBrowserResult, text='The Jobs Which meets your demand').pack()
-                    tx = Text(UserBrowserResult, height=600, width=500, font=('varinda', 11, 'italic'))
+                    Label(UserBrowserResult, text='The Jobs Which meets your demand').pack(anchor=CENTER)
+                    tx = Text(UserBrowserResult, height=30, width=65, font=('varinda', 11, 'italic'))
                     tx.insert(END, goodJobsList)
                     tx.pack()
+                    Label(UserBrowserResult, text='').pack()
+                    Button(UserBrowserResult, text='Submit New Application', bd=2, relief='raised', font=("system", 5), width="21",
+                           command=addApplication).pack()
+                    Button(UserBrowserResult, text='Update Old Application', bd=2, relief='raised', font=("system", 5),
+                           width="21", command=updateWindow).pack()
                     UserBrowserResult.mainloop()
+
 
 def ListJobOffers():
         global JobBrowser
@@ -71,4 +79,4 @@ def ListJobOffers():
                                                                                                                 column=2,
                                                                                                                 pady=12)
         JobBrowser.mainloop()
-ListJobOffers()
+#ListJobOffers()

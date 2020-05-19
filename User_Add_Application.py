@@ -17,11 +17,12 @@ def save2():
         f.close()
         f = open('Users/'+User+'.CSV', 'a')
         if len(UserID.get()) >= 1:
-            writing = csv.DictWriter(f, fieldnames=['ID','Name','address','phone number','university degree','experience','skills','JobID','AppID'], delimiter=',')
-            writing.writerow({'ID card': UserID.get(), 'Name': UserName.get(), 'Address': UserAdress.get(),
-                              'Phone Number': UserNumber.get(), 'Email': UserEmail.get(),
-                              'Degree': UserUniversityDegree.get(), 'Qualification': UserQualifications.get("1.0", END),
-                              'Experience': UserSkills.get("1.0", END), 'JobID': Jobid.get("1.0", END),'AppID':Appid.get("1.0",END)})
+            writing = csv.DictWriter(f, fieldnames=['ID','Name','Address','PhoneNumber','Email','UniversityDegree',
+                                                    'Experience','Skills','JobID'], delimiter=',')
+            writing.writerow({'ID': UserID.get(), 'Name': UserName.get(), 'Address': UserAdress.get(),
+                              'PhoneNumber': UserNumber.get(), 'Email': UserEmail.get(),
+                              'UniversityDegree': UserUniversityDegree.get(), 'Experience': UserExp.get("1.0", END),
+                              'Skills': UserSkills.get("1.0", END), 'JobID': JobID.get()})
             msg2 = messagebox.showinfo('Ok', "Job offer added successfully")
             JobOfferWindow.destroy()
         f.close()
@@ -41,10 +42,9 @@ def addApplication():
         global UserNumber
         global UserEmail
         global UserUniversityDegree
-        global UserQualifications
+        global UserExp
         global UserSkills
-        global Appid
-        global Jobid
+        global JobID
 
         UserID=StringVar()
         UserName=StringVar()
@@ -52,12 +52,15 @@ def addApplication():
         UserNumber=StringVar()
         UserEmail=StringVar()
         UserUniversityDegree=StringVar()
-        UserQualifications=StringVar()
+        UserExp=StringVar()
         UserSkills=StringVar()
-        Appid=StringVar()
         JobID=StringVar()
 
-        Label(frame, text='''Your ID card (Be sure you enter a correct code YOU COULDN'T CHANGE IT)''').pack()
+        Label(frame, text='ID of the job you want to apply for').pack()
+        JobID = Entry(frame, font=('varinda', 8, 'italic'))
+        JobID.pack()
+
+        Label(frame, text='''Your ID card (Be Careful)''').pack()
         UserID = Entry(frame, font=('varinda', 8, 'italic'))
         UserID.pack()
 
@@ -82,24 +85,15 @@ def addApplication():
         UserUniversityDegree.pack()
 
         Label(frame, text='Your Qualification').pack()
-        UserQualifications = Text(frame, height=5, width=20, font=('varinda', 8, 'italic'))
-        UserQualifications.pack()
+        UserExp = Text(frame, height=5, width=20, font=('varinda', 8, 'italic'))
+        UserExp.pack()
 
         Label(frame, text='Your Experience').pack()
         UserSkills = Text(frame, height=5, width=20, font=('varinda', 8, 'italic'))
         UserSkills.pack()
 
-        Label(frame, text='ID of the job you want to apply for').pack()
-        JobID= Text(frame, height=5, width=20,font=('varinda',8,'italic'))
-        JobID.pack()
-        Label(frame, text='Your application ID').pack()
-        Appid = Entry(frame, font=('varinda', 8, 'italic'))
-        Appid.pack()
-
 
         Label(frame, text='Use this data to Apply ',font=('system')).pack()
         Button(frame, text='Apply', bd=1, relief='raised', font=("system", 5), width="6", command=save2).pack()
         JobOfferWindow.mainloop()
-
-
 #addApplication()
