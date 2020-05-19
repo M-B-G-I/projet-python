@@ -54,10 +54,10 @@ def addApplication():
         UserUniversityDegree=StringVar()
         UserQualifications=StringVar()
         UserSkills=StringVar()
-        Appid=Stringvar()
+        Appid=StringVar()
         JobID=StringVar()
 
-        Label(frame, text='ID card').pack()
+        Label(frame, text='''Your ID card (Be sure you enter a correct code YOU COULDN'T CHANGE IT)''').pack()
         UserID = Entry(frame, font=('varinda', 8, 'italic'))
         UserID.pack()
 
@@ -102,3 +102,4 @@ def addApplication():
         JobOfferWindow.mainloop()
 
 
+#addApplication()

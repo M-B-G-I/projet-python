@@ -4,12 +4,10 @@ from tkinter import messagebox
 from tkinter import ttk
 
 def affich():
-    global AdminBrowserResult
     id=enteredID.get()
-    AdminBrowserResult = Tk()
-    AdminBrowserResult.geometry('600x700+400+0')
-    AdminBrowserResult.title('Update job offer')
-    IDlist = fileslist = list()
+    IDlist = list()
+    fileslist = list()
+    goodUsersList = list()
     if 'ALL' in id.upper():
         f=open('Administrators/'+admin+'.CSV','r')
         reading=csv.DictReader(f,delimiter=',')
@@ -54,36 +52,41 @@ def affich():
                 except:
                     continue
                 else:
-                    IDlist.append(xx)
+                    fileslist.append(xx+'.CSV')
             f.close()
-            for i in IDlist:
-                print('i=',i)
+            for i in fileslist:
                 try:
-                    f=open('User/'+i+'.CSV','r')
+                    f=open('Users/'+i.strip(),'r')
                 except:
                     continue
                 else:
                     reading=csv.DictReader(f,delimiter=',')
                     for j in reading:
-                        print('j=',j)
                         try:
                             yy=j['JobID']
                         except:
                             continue
                         else:
                             if yy==id:
-                                fileslist.append(j)
-
+                                goodUsersList.append(j)
+                                goodUsersList.append('\n')
+                            else:
+                                continue
                     f.close()
-            Label(AdminBrowserResult, text='the people who applied for this job are').pack()
-            tx = Text(AdminBrowserResult, height=5, width=20, font=('varinda', 8, 'italic'))
-            tx.insert(END, fileslist)
-            tx.pack()
+            if len(goodUsersList)==0:
+                msg5=messagebox.showerror('Error','No one applied for your job offer yet, Retry later')
+            else:
+                AdminBrowserResult = Tk()
+                AdminBrowserResult.geometry('600x700+400+0')
+                AdminBrowserResult.title('Update job offer')
+                Label(AdminBrowserResult, text='the people who applied for this job are').pack()
+                tx = Text(AdminBrowserResult, height=600, width=500, font=('varinda',11, 'italic'))
+                tx.insert(END, goodUsersList)
+                tx.pack()
+                AdminBrowserResult.mainloop()
+
         else:
             msg3=messagebox.showerror("Error","You did not added a job offer with this ID, Create One then Retry!")
-            AdminBrowserResult.destroy()
-    AdminBrowserResult.mainloop()
-
 def listApp():
     global admin
     f = open('Administrators/ConnectedAdmin.txt', 'r')
@@ -101,9 +104,8 @@ def listApp():
     enteredID = Entry(frame)
     enteredID.grid(row=2, column=2, pady=3)
 
-    Label(frame, text='Are you sure to for the application for this job?').grid(row=6, column=1, sticky=W)
+    Label(frame, text='').grid(row=6, column=1, sticky=W)
     Button(frame, text='Search', bd=1, relief='raised', font=("system", 5), width="6", command=affich).grid(row=6,
                                                                                                            column=2,
                                                                                                            pady=12)
     AppBrowser.mainloop()
-#listApp()
