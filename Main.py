@@ -5,6 +5,7 @@ from Admin_Create_Account import createAdmin
 from User_Create_Account import createUser
 import csv
 
+
 def BackFromaAminToMain():
     adminScreen.destroy()
     main()
@@ -18,14 +19,15 @@ def AdminWindow():
     adminScreen=Tk()
     adminScreen.geometry('1024x681')
     adminScreen.title('Administrator Login')
+    adminScreen['bg']='black'
     LabelFrame(adminScreen,text='Hello Administrator',bg='grey',font=('veranda',30),height="100", width="2000",).pack(anchor=CENTER)
     # Admin or job seeker ?
     Button(adminScreen,text='Sign in', bd=3, relief='raised', font=("system", 10), height="2", width="30",
-           command=AdminAuthAndOp).pack(pady=12, anchor=CENTER)
+           command=AdminAuthAndOp,bg='grey').pack(pady=12, anchor=CENTER)
     Button(adminScreen,text='Sign up', bd=3, relief='raised', font=('system', 10), height="2", width="30",
-           command=createAdmin).pack(pady=12, anchor=CENTER)
+           command=createAdmin,bg='grey').pack(pady=12, anchor=CENTER)
     Button(adminScreen, text='Back to Home', bd=3, relief='raised', font=('system', 10), height="2", width="15",
-           command=BackFromaAminToMain).pack(pady=12, anchor=S)
+           command=BackFromaAminToMain,bg='grey').pack(pady=12, anchor=S)
     mainScreen.destroy()
     adminScreen.mainloop()
 def UserWindow():
@@ -34,15 +36,16 @@ def UserWindow():
     userScreen = Tk()
     userScreen.geometry('1024x681')
     userScreen.title('User Login')
+    userScreen['bg']='white'
     # Sign in or Sign up
-    LabelFrame(userScreen,text='Hello User',bg='grey',font=('veranda',30),height="100", width="2000",).pack(anchor=CENTER)
-    Button(userScreen,text='Sign in', bd=3, relief='raised', font=("system", 10), height="2", width="30",
-           command=UserAuthAndOp).pack(pady=12, anchor=CENTER)
-    Button(userScreen,text='Sign up', bd=3, relief='raised', font=('system', 10), height="2", width="30", command=createUser
-            ).pack(
+    LabelFrame(userScreen,text='Hello User',bg='#80ccff',fg='white',font=('veranda',30),height="100", width="2000",).pack(anchor=CENTER)
+    Button(userScreen,text='Sign in', bd=1, relief='raised', font=("system", 10), height="2", width="30",
+           command=UserAuthAndOp,bg='#80ccff',fg='white').pack(pady=12, anchor=CENTER)
+    Button(userScreen,text='Sign up', bd=1, relief='raised', font=('system', 10), height="2", width="30", command=createUser
+            ,bg='#80ccff',fg='white').pack(
         pady=12, anchor=CENTER)
-    Button(userScreen,text='Back to Home', bd=3, relief='raised', font=('system', 10), height="2", width="15", command=BackFromUserToMain
-            ).pack(
+    Button(userScreen,text='Back to Home', bd=1, relief='raised', font=('system', 10), height="2", width="15", command=BackFromUserToMain
+            ,bg='#80ccff',fg='white').pack(
         pady=12, anchor=S)
     mainScreen.destroy()
     userScreen.mainloop()

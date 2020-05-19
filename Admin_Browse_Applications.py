@@ -95,7 +95,7 @@ def listApp():
     global AppBrowser
     global enteredID
     AppBrowser = Tk()
-    AppBrowser.geometry('385x115')
+    AppBrowser.geometry('350x115')
     AppBrowser.title("browser")
     frame = LabelFrame(AppBrowser, text='Search for the applications of an offer you created as an Admin')
     frame.grid(row=1, column=1, columnspan=10, rowspan=10)
@@ -109,3 +109,4 @@ def listApp():
                                                                                                            column=2,
                                                                                                            pady=12)
     AppBrowser.mainloop()
+#listApp()

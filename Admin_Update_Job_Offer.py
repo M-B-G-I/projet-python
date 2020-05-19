@@ -35,7 +35,7 @@ def save():
 def update():
         global JobOfferWindow
         JobOfferWindow = Tk()
-        JobOfferWindow.geometry('600x700+400+0')
+        JobOfferWindow.geometry('440x600+400+0')
         JobOfferWindow.title('Update job offer')
         frame = LabelFrame(JobOfferWindow, text='Update the convenient information about the job which ID='+info['ID'],font=('system'))
         frame.pack()
@@ -142,7 +142,7 @@ def updateWindow():
     global JobIdToBeUpdated
     main = Tk()
     main.geometry('335x115')
-    main.title("Delete")
+    main.title("Update")
     frame = LabelFrame(main, text='Enter the ID of the job offer to be Updated')
     frame.grid(row=1, column=1, columnspan=10, rowspan=10)
 

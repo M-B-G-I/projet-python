@@ -39,7 +39,7 @@ def affich():
                     else:
                         if idd==id or (id in loc) or (id in dg) or (id in qf) or (id in expp) or (id in mdd):
                             goodJobsList.append(j)
-                            goodJobsList.append('\n')
+                            #goodJobsList.append('\n')
 
                 f.close()
         if len(goodJobsList) == 0:
@@ -48,16 +48,23 @@ def affich():
         else:
                     UserBrowserResult = Tk()
                     UserBrowserResult.geometry('600x700+400+0')
-                    UserBrowserResult.title('Update job offer')
-                    Label(UserBrowserResult, text='The Jobs Which meets your demand').pack(anchor=CENTER)
-                    tx = Text(UserBrowserResult, height=30, width=65, font=('varinda', 11, 'italic'))
-                    tx.insert(END, goodJobsList)
-                    tx.pack()
-                    Label(UserBrowserResult, text='').pack()
-                    Button(UserBrowserResult, text='Submit New Application', bd=2, relief='raised', font=("system", 5), width="21",
-                           command=addApplication).pack()
-                    Button(UserBrowserResult, text='Update Old Application', bd=2, relief='raised', font=("system", 5),
-                           width="21", command=updateWindow).pack()
+                    UserBrowserResult.title('Job offers Founded')
+                    Label(UserBrowserResult, text='The Jobs That Meets your Demand').grid(row=0,column=0,sticky=W)
+                    #goodJobsList.insert(0,my)
+                    i=0
+                    while i <= (len(goodJobsList)-1)*11:
+                        Label(UserBrowserResult, text='Job N°'+str(i+1),fg='red').grid(row=i+1, column=0, sticky=W)
+                        my=['ID','CompanyName','CompanyAddress','CompanyPhoneNumber','CompanyEmail','RequestedDegree',
+                             'RequestedQualification','RequestedExperience','MissionDescription']
+                        color=['#000099','#003300']
+                        for j in range(9):
+                             Label(UserBrowserResult, text=my[j],fg=color[j%2]).grid(row=i+j+2, column=0,sticky=W)
+                             Label(UserBrowserResult, text=goodJobsList [i] [my[j]],fg=color[j%2]).grid(row=i+j+2, column=1, sticky=W)
+                        i+=11
+                        Button(UserBrowserResult, text='Submit New Application', bd=2, relief='raised', font=("system", 5), width="21",
+                           command=addApplication).grid(row=i,column=0,sticky=W)
+                        Button(UserBrowserResult, text='Update Old Application', bd=2, relief='raised', font=("system", 5),
+                           width="21", command=updateWindow).grid(row=i,column=1,sticky=W)
                     UserBrowserResult.mainloop()
 
 
@@ -65,7 +72,7 @@ def ListJobOffers():
         global JobBrowser
         global enteredKey
         JobBrowser = Tk()
-        JobBrowser.geometry('385x115')
+        JobBrowser.geometry('420x115')
         JobBrowser.title("browser")
         frame = LabelFrame(JobBrowser, text='Search for Job Offers')
         frame.grid(row=1, column=1, columnspan=10, rowspan=10)
@@ -79,4 +86,4 @@ def ListJobOffers():
                                                                                                                 column=2,
                                                                                                                 pady=12)
         JobBrowser.mainloop()
-#ListJobOffers()
+ListJobOffers()

@@ -53,7 +53,7 @@ def verif():
 
             optionsScreen.mainloop()
         else:
-            msg = messagebox.showinfo('Error 403', "Invalid username or password Retry")
+            msg = messagebox.showinfo('Error 403', "Invalid Password Retry")
             enteredName.delete(0,END)
             enteredPassword.delete(0,END)
 
