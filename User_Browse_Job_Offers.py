@@ -86,4 +86,4 @@ def ListJobOffers():
                                                                                                                 column=2,
                                                                                                                 pady=12)
         JobBrowser.mainloop()
-ListJobOffers()
+#ListJobOffers()
