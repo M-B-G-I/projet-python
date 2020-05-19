@@ -2,7 +2,7 @@ from tkinter import *
 import csv
 from tkinter import messagebox
 from Admin_Update_Job_Offer import updateWindow
-from Admin_Browse_Applications import listApp
+from User_Browse_Job_Offers import ListJobOffers
 #from User_Browse_Job_Offers import list
 from Admin_Add_Job_Offer import addJob
 from Admin_Delete_Job_Offer import deleteJob
@@ -41,9 +41,9 @@ def verif():
             LabelFrame(optionsScreen, text='Services', bg='grey', font=('veranda', 30), height="100",
                        width="2000", ).pack(anchor=CENTER)
             Button(optionsScreen, text='Search for job offers', bd=3, relief='raised', font=('system', 10), height="2",
-                   width="17", command=list).pack(pady=12, anchor=CENTER)
+                   width="17", command=ListJobOffers).pack(pady=12, anchor=CENTER)
             Button(optionsScreen, text='jobs you already applied for', bd=3, relief='raised', font=('system', 10), height="2",
-                   width="17", command=list).pack(pady=12, anchor=CENTER)
+                   width="17", command=lisAppliedJobOffers).pack(pady=12, anchor=CENTER)
 
             f=open('Users/ConnectedUsers.txt', 'w')
             f.write(username_info)
