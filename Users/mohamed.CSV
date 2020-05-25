@@ -1,4 +1,10 @@
-ID,Name,Address,PhoneNumber,UniversityDegree,Experience,Skills,JobID
-07243434,mohamed salah,"1st irrimel,mourouj,Tunisia",19199192,mohamed@gmail.com,PhD,"Python,C++,HTML,JS
-","10 years of working as a project manager
-",1515
+ID,Name,Address,PhoneNumber,Email,UniversityDegree,Experience,Skills,JobID
+
+eaz,ze,ze,ze,ze,ze,"ze
+","ze
+",12
+
+0724,mohamed salah,tunis,9229992,dksd@sfkjsd.com,L3CS,"
+","2 years
+",1515
+

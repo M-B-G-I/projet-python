@@ -1,8 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 import csv
-from User_Update_Application import updateWindow
-from User_Add_Application import addApplication
+from User_Verif_Apply_Or_Update import verifwindow
 
 def affich():
         id = enteredKey.get()
@@ -52,7 +51,7 @@ def affich():
                     Label(UserBrowserResult, text='The Jobs That Meets your Demand').grid(row=0,column=0,sticky=W)
                     #goodJobsList.insert(0,my)
                     i=0
-                    while i <= (len(goodJobsList)-1)*11:
+                    while i <= (len(goodJobsList)-1)*10:
                         Label(UserBrowserResult, text='Job N°'+str(i+1),fg='red').grid(row=i+1, column=0, sticky=W)
                         my=['ID','CompanyName','CompanyAddress','CompanyPhoneNumber','CompanyEmail','RequestedDegree',
                              'RequestedQualification','RequestedExperience','MissionDescription']
@@ -61,10 +60,8 @@ def affich():
                              Label(UserBrowserResult, text=my[j],fg=color[j%2]).grid(row=i+j+2, column=0,sticky=W)
                              Label(UserBrowserResult, text=goodJobsList [i] [my[j]],fg=color[j%2]).grid(row=i+j+2, column=1, sticky=W)
                         i+=11
-                        Button(UserBrowserResult, text='Submit New Application', bd=2, relief='raised', font=("system", 5), width="21",
-                           command=addApplication).grid(row=i,column=0,sticky=W)
-                        Button(UserBrowserResult, text='Update Old Application', bd=2, relief='raised', font=("system", 5),
-                           width="21", command=updateWindow).grid(row=i,column=1,sticky=W)
+                    Button(UserBrowserResult, text='Apply/Update', bd=2, relief='raised', font=("system", 5),
+                           width="21", command=verifwindow).grid(row=i, column=0, sticky=W)
                     UserBrowserResult.mainloop()
 
 

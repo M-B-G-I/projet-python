@@ -14,7 +14,7 @@ def register():
             writing.writerow({'UserName': username_info, 'UserPassword': password_info})
             f.close()
             f = open("Users/"+username_info+".CSV", 'w')
-            writing = csv.DictWriter(f, fieldnames=['ID', 'Name', 'Address', 'PhoneNumber', 'UniversityDegree',
+            writing = csv.DictWriter(f, fieldnames=['ID', 'Name', 'Address', 'PhoneNumber','Email', 'UniversityDegree',
                                                     'Experience', 'Skills','JobID'], delimiter=',')
             writing.writeheader()
             msg = messagebox.showinfo('ok', "registration success")
@@ -55,7 +55,3 @@ def createUser():
                                                                                                               column=2,
                                                                                                               pady=12)
     UserSignupScreen.mainloop()
-
-
-
-

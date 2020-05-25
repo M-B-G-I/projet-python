@@ -31,6 +31,7 @@ def save():
 
 
 def update():
+        #print(list(info))
         global JobApplicationWindow
         JobApplicationWindow = Tk()
         JobApplicationWindow.geometry('600x700+400+0')
@@ -97,6 +98,7 @@ def update():
         JobApplicationWindow.mainloop()
 
 def updateJob():
+    global info
     global user
     global Code
     global UserCode
@@ -105,6 +107,7 @@ def updateJob():
     f = open('Users/ConnectedUsers.txt', 'r')
     user= f.read()
     f.close()
+    #print(user)
     try:
         f = open('Users/'+user+'.CSV', 'r')
     except:
@@ -119,14 +122,14 @@ def updateJob():
             except:
                 continue
             else:
+                #print(x,"*",y)
                 if Code == y and UserCode==x:
                     exist = True
-                    # Copier coller aala mtaa l add job
-                    global info
                     info=row
                     update()
                 if exist == False:
                     AppIdToBeUpdated.delete(0, END)
+                    UserID.delete(0,END)
                     msg = messagebox.showinfo('Error', "non-existent Job ID or Wrong ID card, Retry!")
         f.close()
 
