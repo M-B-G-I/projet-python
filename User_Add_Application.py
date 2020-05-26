@@ -22,12 +22,12 @@ def save2():
             writing.writerow({'ID': UserID.get(), 'Name': UserName.get(), 'Address': UserAdress.get(),
                               'PhoneNumber': UserNumber.get(), 'Email': UserEmail.get(),
                               'UniversityDegree': UserUniversityDegree.get(), 'Experience': UserExp.get("1.0", END),
-                              'Skills': UserSkills.get("1.0", END), 'JobID': JobID.get()})
+                              'Skills': UserSkills.get("1.0", END), 'JobID': JobID})
             msg2 = messagebox.showinfo('Ok', "Job offer added successfully")
             JobOfferWindow.destroy()
         f.close()
 
-def addApplication():
+def addApplication(xyz):
         global JobOfferWindow
         JobOfferWindow = Tk()
         JobOfferWindow.geometry('320x600+400+0')
@@ -54,11 +54,11 @@ def addApplication():
         UserUniversityDegree=StringVar()
         UserExp=StringVar()
         UserSkills=StringVar()
-        JobID=StringVar()
 
-        Label(frame, text='ID of the job you want to apply for').pack()
+        JobID=xyz
+        '''Label(frame, text='ID of the job you want to apply for').pack()
         JobID = Entry(frame, font=('varinda', 8, 'italic'))
-        JobID.pack()
+        JobID.pack()'''
 
         Label(frame, text='''Your ID card (Be Careful)''').pack()
         UserID = Entry(frame, font=('varinda', 8, 'italic'))

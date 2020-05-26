@@ -22,9 +22,9 @@ def verif():
                 new=False
                 break
     if new==False:
-        updateWindow()
+        updateWindow(JobID.get())
     else:
-        addApplication()
+        addApplication(JobID.get())
     f.close()
 def verifwindow():
     global JobID

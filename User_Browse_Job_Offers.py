@@ -36,7 +36,7 @@ def affich():
                     except:
                         continue
                     else:
-                        if idd==id or (id in loc) or (id in dg) or (id in qf) or (id in expp) or (id in mdd):
+                        if idd==id or (id.upper() in loc.upper()) or (id.upper() in dg.upper()) or (id.upper() in qf.upper()) or (id.upper() in expp.upper()) or (id.upper() in mdd.upper()):
                             goodJobsList.append(j)
                             #goodJobsList.append('\n')
 
@@ -48,20 +48,20 @@ def affich():
                     UserBrowserResult = Tk()
                     UserBrowserResult.geometry('600x700+400+0')
                     UserBrowserResult.title('Job offers Founded')
-                    Label(UserBrowserResult, text='The Jobs That Meets your Demand').grid(row=0,column=0,sticky=W)
+                    Label(UserBrowserResult, text='The Jobs That Meets your Demand ('+str(len(goodJobsList))+' job offer(s))').grid(row=0,column=0,sticky=W)
                     #goodJobsList.insert(0,my)
                     i=0
-                    while i <= (len(goodJobsList)-1)*10:
-                        Label(UserBrowserResult, text='Job N°'+str(i+1),fg='red').grid(row=i+1, column=0, sticky=W)
+                    while i < len(goodJobsList)*10:
+                        Label(UserBrowserResult, text='Job N°'+str(i%9 +1),fg='red').grid(row=i+1, column=0, sticky=W)
                         my=['ID','CompanyName','CompanyAddress','CompanyPhoneNumber','CompanyEmail','RequestedDegree',
                              'RequestedQualification','RequestedExperience','MissionDescription']
                         color=['#000099','#003300']
                         for j in range(9):
                              Label(UserBrowserResult, text=my[j],fg=color[j%2]).grid(row=i+j+2, column=0,sticky=W)
-                             Label(UserBrowserResult, text=goodJobsList [i] [my[j]],fg=color[j%2]).grid(row=i+j+2, column=1, sticky=W)
-                        i+=11
+                             Label(UserBrowserResult, text=goodJobsList [i%9] [my[j]],fg=color[j%2]).grid(row=i+j+2, column=1, sticky=W)
+                        i+=10
                     Button(UserBrowserResult, text='Apply/Update', bd=2, relief='raised', font=("system", 5),
-                           width="21", command=verifwindow).grid(row=i, column=0, sticky=W)
+                           width="21", command=verifwindow).grid(row=i+1, column=0, sticky=W)
                     UserBrowserResult.mainloop()
 
 

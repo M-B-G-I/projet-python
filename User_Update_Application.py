@@ -103,7 +103,7 @@ def updateJob():
     global Code
     global UserCode
     UserCode=UserID.get()
-    Code = AppIdToBeUpdated.get()
+    Code = AppIdToBeUpdated
     f = open('Users/ConnectedUsers.txt', 'r')
     user= f.read()
     f.close()
@@ -127,15 +127,11 @@ def updateJob():
                     exist = True
                     info=row
                     update()
-                if exist == False:
-                    AppIdToBeUpdated.delete(0, END)
-                    UserID.delete(0,END)
-                    msg = messagebox.showinfo('Error', "non-existent Job ID or Wrong ID card, Retry!")
         f.close()
 
 
 
-def updateWindow():
+def updateWindow(xyz):
     global main
     global AppIdToBeUpdated
     global UserID
@@ -149,9 +145,10 @@ def updateWindow():
     UserID = Entry(frame)
     UserID.grid(row=2, column=2, pady=3)
 
-    Label(frame, text='Job ID (From the Search Result)').grid(row=3, column=1, sticky=W, pady=3)
+    AppIdToBeUpdated=xyz
+    '''Label(frame, text='Job ID (From the Search Result)').grid(row=3, column=1, sticky=W, pady=3)
     AppIdToBeUpdated = Entry(frame)
-    AppIdToBeUpdated.grid(row=3, column=2, pady=3)
+    AppIdToBeUpdated.grid(row=3, column=2, pady=3)'''
 
     Label(frame, text='Are you sure to Update this Application?').grid(row=6, column=1, sticky=W)
     B = Button(frame, text='Update', bd=1, relief='raised', font=("system", 5), width="6", command=updateJob).grid(row=6,
