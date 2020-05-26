@@ -1,13 +1,13 @@
 from tkinter import *
 from tkinter import messagebox
 import csv
-from User_Verif_Apply_Or_Update import verifwindow
+from Code.User_Verif_Apply_Or_Update import verifwindow
 
 def affich():
         id = enteredKey.get()
         fileslist = list()
         goodJobsList = list()
-        f = open('Administrators/Administrators.CSV', 'r')
+        f = open('../Administrators/Administrators.CSV', 'r')
         reading = csv.DictReader(f, delimiter=',')
         for i in reading:
             try:

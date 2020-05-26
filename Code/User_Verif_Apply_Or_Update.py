@@ -1,11 +1,11 @@
 from tkinter import *
 import csv
-from User_Update_Application import updateWindow
-from User_Add_Application import addApplication
+from Code.User_Update_Application import updateWindow
+from Code.User_Add_Application import addApplication
 
 def verif():
     global User
-    f=open('Users/ConnectedUsers.txt','r')
+    f=open('../Users/ConnectedUsers.txt', 'r')
     User=f.read()
     f.close()
     f=open('Users/'+User+'.CSV','r')

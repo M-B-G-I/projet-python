@@ -1,8 +1,8 @@
 from tkinter import *
-from Admin_Authentication_And_Options import AdminAuthAndOp
-from User_Authentication_And_Options import UserAuthAndOp
-from Admin_Create_Account import createAdmin
-from User_Create_Account import createUser
+from Code.Admin_Authentication_And_Options import AdminAuthAndOp
+from Code.User_Authentication_And_Options import UserAuthAndOp
+from Code.Admin_Create_Account import createAdmin
+from Code.User_Create_Account import createUser
 import csv
 
 

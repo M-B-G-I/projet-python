@@ -1,27 +1,24 @@
 from tkinter import *
 from tkinter import messagebox
 import csv
-
-
 def register():
     username_info = enteredName.get().strip()
     password_info = enteredPassword.get()
     try:
-        ch = "Administrators/"+username_info+".CSV"
+        ch = "Users/"+username_info+".CSV"
         f = open(ch, 'r')
     except FileNotFoundError:
         if len(username_info)>0 and len(password_info)>3:
-            f = open("Administrators/Administrators.CSV", "a")
-            writing = csv.DictWriter(f, fieldnames=['AdminName', 'AdminPassword'], delimiter=',')
-            writing.writerow({'AdminName': username_info, 'AdminPassword': password_info})
+            f = open("../Users/Users.CSV", "a")
+            writing = csv.DictWriter(f, fieldnames=['UserName', 'UserPassword'], delimiter=',')
+            writing.writerow({'UserName': username_info, 'UserPassword': password_info})
             f.close()
-            f = open("Administrators/"+username_info+".CSV", 'w')
-            writing = csv.DictWriter(f, fieldnames=['ID', 'CompanyName', 'CompanyAddress', 'CompanyPhoneNumber',
-                                                    'CompanyEmail', 'RequestedDegree', 'RequestedQualification',
-                                                    'RequestedExperience', 'MissionDescription'], delimiter=',')
+            f = open("Users/"+username_info+".CSV", 'w')
+            writing = csv.DictWriter(f, fieldnames=['ID', 'Name', 'Address', 'PhoneNumber','Email', 'UniversityDegree',
+                                                    'Experience', 'Skills','JobID'], delimiter=',')
             writing.writeheader()
             msg = messagebox.showinfo('ok', "registration success")
-            adminSignupScreen.destroy()
+            UserSignupScreen.destroy()
             f.close()
         else:
             enteredName.delete(0, END)
@@ -33,12 +30,12 @@ def register():
         msg = messagebox.showinfo('Error', "Existent username, Retry")
 
 
-def createAdmin():
-    global adminSignupScreen
-    adminSignupScreen = Tk()
-    adminSignupScreen.geometry('335x125')
-    adminSignupScreen.title('Administrator Sign up')
-    frame = LabelFrame(adminSignupScreen, text='Use a new username (length>0) and password (length>3)')
+def createUser():
+    global UserSignupScreen
+    UserSignupScreen = Tk()
+    UserSignupScreen.geometry('335x125')
+    UserSignupScreen.title('User Sign up')
+    frame = LabelFrame(UserSignupScreen, text='Use a new username (length>0) and password (length>3)')
     frame.grid(row=1, column=1, columnspan=10, rowspan=10)
 
     # creation
@@ -57,4 +54,4 @@ def createAdmin():
     Button(frame, text='Create', bd=1, relief='raised', font=("system", 5), width="6", command=register).grid(row=6,
                                                                                                               column=2,
                                                                                                               pady=12)
-    adminSignupScreen.mainloop()
+    UserSignupScreen.mainloop()

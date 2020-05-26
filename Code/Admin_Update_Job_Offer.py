@@ -108,7 +108,7 @@ def update():
 def updateJob():
     global admin
     Code = JobIdToBeUpdated.get()
-    f = open('Administrators/ConnectedAdmin.txt', 'r')
+    f = open('../Administrators/ConnectedAdmin.txt', 'r')
     admin = f.read()
     f.close()
     try:

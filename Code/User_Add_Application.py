@@ -6,7 +6,7 @@ import csv
 from tkinter import Text, Tk
 
 def save2():
-    f=open('Users/ConnectedUsers.txt','r')
+    f=open('../Users/ConnectedUsers.txt', 'r')
     User=f.read()
     f.close()
     try:

@@ -34,7 +34,7 @@ def ok():
     f.close()
 def deleteJob():
     global admin
-    f = open('Administrators/ConnectedAdmin.txt', 'r')
+    f = open('../Administrators/ConnectedAdmin.txt', 'r')
     admin = f.read()
     f.close()
     global main

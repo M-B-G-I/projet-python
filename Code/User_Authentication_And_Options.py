@@ -1,7 +1,7 @@
 from tkinter import *
 import csv
 from tkinter import messagebox
-from User_Browse_Job_Offers import ListJobOffers
+from Code.User_Browse_Job_Offers import ListJobOffers
 
 
 def verif():
@@ -15,7 +15,7 @@ def verif():
         UserSigninScreen.destroy()
     else:
         f.close()
-        f = open("Users/Users.CSV", 'r')
+        f = open("../Users/Users.CSV", 'r')
         users=csv.reader(f,delimiter=',')
         good=False
         for i in users:
@@ -39,7 +39,7 @@ def verif():
             Button(optionsScreen, text='Search for job offers', bd=3, relief='raised', font=('system', 10), height="2",
                    width="17", command=ListJobOffers).pack(pady=12, anchor=CENTER)
 
-            f=open('Users/ConnectedUsers.txt', 'w')
+            f=open('../Users/ConnectedUsers.txt', 'w')
             f.write(username_info)
             f.close()
 
