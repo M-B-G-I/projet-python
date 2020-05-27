@@ -13,8 +13,28 @@ def save():
         msg2 = messagebox.showinfo('Error 403', "Your are not allowed to be here! CREATE AN ACCOUNT then Retry.")
     else:
         f.close()
+        adminlist=list()
+        unique=True
+        f=open('Administrators/Administrators.CSV','r')
+        reading=csv.DictReader(f,delimiter=',')
+        for i in reading:
+            adminlist.append(i['AdminName']+'.CSV')
+        f.close()
+        for i in adminlist:
+            f=open('Administrators/'+i,'r')
+            reading=csv.DictReader(f,delimiter=',')
+            for j in reading:
+                try:
+                    verif=j['ID']
+                except:
+                    continue
+                else:
+                    if verif==id.get():
+                        unique=False
+                        break
+            f.close()
         f = open('Administrators/'+admin+'.CSV', 'a')
-        if len(id.get()) >= 1:
+        if len(id.get()) >= 1 and unique==True:
             writing = csv.DictWriter(f, fieldnames=['ID', 'CompanyName', 'CompanyAddress', 'CompanyPhoneNumber',
                                                     'CompanyEmail', 'RequestedDegree', 'RequestedQualification',
                                                     'RequestedExperience', 'MissionDescription'], delimiter=',')
@@ -24,6 +44,10 @@ def save():
                               'RequestedExperience': rexp.get("1.0", END), 'MissionDescription': t.get("1.0", END)})
             msg2 = messagebox.showinfo('Ok', "Job offer added successfully")
             JobOfferWindow.destroy()
+        elif unique==False and len(id.get()) >= 1:
+            msg3 = messagebox.showerror('Error', "This Job Offer ID is already used! Try to use an unique Job ID")
+        else:
+            msg4 = messagebox.showerror('Error', "Use an ID which length >=1")
         f.close()
 
 def addJob():
