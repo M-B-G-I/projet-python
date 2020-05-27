@@ -1,5 +1,3 @@
-from tkinter import*
-from tkinter import messagebox
 from tkinter import *
 from tkinter import messagebox
 import csv
@@ -12,7 +10,7 @@ def save2():
     try:
         f=open('Users/'+User+'.CSV', 'r')
     except:
-        msg2 = messagebox.showinfo('Error 403', "Your are not allowed to be here! CREATE AN ACCOUNT then Retry.")
+        msg2 = messagebox.showerror('Error 403', "Your are not allowed to be here! CREATE AN ACCOUNT then Retry.")
     else:
         f.close()
         f = open('Users/'+User+'.CSV', 'a')

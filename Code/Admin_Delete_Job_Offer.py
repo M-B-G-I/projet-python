@@ -9,7 +9,7 @@ def ok():
     try:
         f=open('Administrators/'+admin+'.CSV', 'r')
     except:
-        msg2 = messagebox.showinfo('Error 403', "Your are not allowed to be here! CREATE AN ACCOUNT then Retry.")
+        msg2 = messagebox.showerror('Error 403', "Your are not allowed to be here! CREATE AN ACCOUNT then Retry.")
     else:
         reader = csv.DictReader(f,delimiter=',')
         remove=False
@@ -21,7 +21,7 @@ def ok():
         if remove == True:
             msg1 = messagebox.showinfo("delete", "job offer deleted")
         else:
-            msg = messagebox.showinfo("error", "this job offer ID does not exist")
+            msg = messagebox.showerror("Error", "this job offer ID does not exist")
             f.close()
     main.destroy()
 

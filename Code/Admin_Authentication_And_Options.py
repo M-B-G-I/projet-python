@@ -13,7 +13,7 @@ def verif():
         ch="Administrators/"+username_info+'.CSV'
         f=open(ch,'r')
     except FileNotFoundError:
-        msg = messagebox.showinfo('Error', "Create an account then Retry")
+        msg = messagebox.showerror('Error', "Create an account then Retry")
         adminSigninScreen.destroy()
     else:
         f.close()
@@ -53,7 +53,7 @@ def verif():
 
             optionsScreen.mainloop()
         else:
-            msg = messagebox.showinfo('Error 403', "Invalid Password Retry")
+            msg = messagebox.showerror('Error 403', "Invalid Password Retry")
             enteredName.delete(0,END)
             enteredPassword.delete(0,END)
 

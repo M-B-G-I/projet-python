@@ -23,11 +23,11 @@ def register():
         else:
             enteredName.delete(0, END)
             enteredPassword.delete(0, END)
-            msg = messagebox.showinfo('Error', "Invalid username or password, Retry")
+            msg = messagebox.showerror('Error', "Invalid username or password, Retry")
     else:
         enteredName.delete(0, END)
         enteredPassword.delete(0, END)
-        msg = messagebox.showinfo('Error', "Existent username, Retry")
+        msg = messagebox.showerror('Error', "Existent username, Retry")
 
 
 def createUser():

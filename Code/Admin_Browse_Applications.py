@@ -1,7 +1,6 @@
 from tkinter import *
 import csv
 from tkinter import messagebox
-from tkinter import ttk
 
 def affich():
     global goodAppsList

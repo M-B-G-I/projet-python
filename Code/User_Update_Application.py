@@ -111,7 +111,7 @@ def updateJob():
     try:
         f = open('Users/'+user+'.CSV', 'r')
     except:
-        msg2 = messagebox.showinfo('Error 403', "Your are not allowed to be here! CREATE AN ACCOUNT then Retry.")
+        msg2 = messagebox.showerror('Error 403', "Your are not allowed to be here! CREATE AN ACCOUNT then Retry.")
     else:
         reader = csv.DictReader(f,delimiter=",")
         exist = False
@@ -128,7 +128,7 @@ def updateJob():
                     info=row
                     update()
                 else:
-                    msg2 = messagebox.showinfo('Error 403',"Your ID is incorrect.Please try again!")
+                    msg2 = messagebox.showerror('Error 403',"Your ID is incorrect.Please try again!")
 
         f.close()
 

@@ -10,7 +10,7 @@ def save():
     try:
         f=open('Administrators/'+admin+'.CSV', 'r')
     except:
-        msg2 = messagebox.showinfo('Error 403', "Your are not allowed to be here! CREATE AN ACCOUNT then Retry.")
+        msg2 = messagebox.showerror('Error 403', "Your are not allowed to be here! CREATE AN ACCOUNT then Retry.")
     else:
         f.close()
         adminlist=list()
