@@ -9,7 +9,7 @@ def register():
         f = open(ch, 'r')
     except FileNotFoundError:
         if len(username_info)>0 and len(password_info)>3:
-            f = open("../Users/Users.CSV", "a")
+            f = open("Users/Users.CSV", "a")
             writing = csv.DictWriter(f, fieldnames=['UserName', 'UserPassword'], delimiter=',')
             writing.writerow({'UserName': username_info, 'UserPassword': password_info})
             f.close()

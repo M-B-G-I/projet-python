@@ -104,7 +104,7 @@ def updateJob():
     global UserCode
     UserCode=UserID.get()
     Code = AppIdToBeUpdated
-    f = open('../Users/ConnectedUsers.txt', 'r')
+    f = open('Users/ConnectedUsers.txt', 'r')
     user= f.read()
     f.close()
     #print(user)
