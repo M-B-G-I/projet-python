@@ -39,7 +39,7 @@ def verifwindow():
     JobID.grid(row=2, column=2, pady=3)
 
     Label(frame, text='Are you sure to Apply/Update this Application?').grid(row=6, column=1, sticky=W)
-    B = Button(frame, text='Update', bd=1, relief='raised', font=("system", 5), width="6", command=verif).grid(
+    B = Button(frame, text='Apply/Update', bd=1, relief='raised', font=("system", 5), width="12", command=verif).grid(
         row=6, column=2, pady=12)
     window.mainloop()
 #verifwindow()

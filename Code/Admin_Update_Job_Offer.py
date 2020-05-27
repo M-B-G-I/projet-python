@@ -101,7 +101,7 @@ def update():
         t.pack()
 
 
-        Label(frame, text='Use this data to create your account',font=('system')).pack()
+        Label(frame, text='Use this data to update your job offer',font=('system')).pack()
         Button(frame, text='Update', bd=1, relief='raised', font=("system", 5), width="6", command=save).pack()
         JobOfferWindow.mainloop()
 

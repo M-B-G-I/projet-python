@@ -94,7 +94,7 @@ def update():
         UserSkills.pack()
 
         Label(frame, text='Use this data to update your job',font=('system')).pack()
-        Button(frame, text='Update', bd=1, relief='raised', font=("system", 5), width="6", command=save).pack()
+        Button(frame, text='Update ', bd=1, relief='raised', font=("system", 5), width="6", command=save).pack()
         JobApplicationWindow.mainloop()
 
 def updateJob():
@@ -127,6 +127,9 @@ def updateJob():
                     exist = True
                     info=row
                     update()
+                else:
+                    msg2 = messagebox.showinfo('Error 403',"Your ID is incorrect.Please try again!")
+
         f.close()
 
 

@@ -21,7 +21,8 @@ def save():
             adminlist.append(i['AdminName']+'.CSV')
         f.close()
         for i in adminlist:
-            f=open('Administrators/'+i,'r')
+            print(i)
+            f=open('Administrators/'+str(i),'r')
             reading=csv.DictReader(f,delimiter=',')
             for j in reading:
                 try:
@@ -116,6 +117,6 @@ def addJob():
         t.pack()
 
 
-        Label(frame, text='Use this data to create your account',font=('system')).pack()
-        Button(frame, text='Create', bd=1, relief='raised', font=("system", 5), width="6", command=save).pack()
+        Label(frame, text='Use this data to add your job offer',font=('system')).pack()
+        Button(frame, text='Add', bd=1, relief='raised', font=("system", 5), width="6", command=save).pack()
         JobOfferWindow.mainloop()
