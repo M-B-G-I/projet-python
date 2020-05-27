@@ -4,7 +4,7 @@ import csv
 from tkinter import Text, Tk
 
 def save():
-    f=open('../Administrators/ConnectedAdmin.txt', 'r')
+    f=open('Administrators/ConnectedAdmin.txt', 'r')
     admin=f.read()
     f.close()
     try:

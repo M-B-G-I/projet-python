@@ -8,7 +8,7 @@ def affich():
     IDlist = list()
     fileslist = list()
     goodUsersList = list()
-    if 'ALL' in id.upper():
+    if 'ALL' in id.upper:
         f=open('Administrators/'+admin+'.CSV','r')
         reading=csv.DictReader(f,delimiter=',')
         for i in reading:
@@ -19,7 +19,7 @@ def affich():
             else:
                 IDlist.append(ids)
         f.close()
-        f=open('../Users/Users.CSV', 'r')
+        f=open('Users/Users.CSV', 'r')
         reading = csv.DictReader(f, delimiter=',')
         for i in reading:
             try:
@@ -44,7 +44,7 @@ def affich():
                     break
         f.close()
         if exist==True:
-            f=open('../Users/Users.CSV', 'r')
+            f=open('Users/Users.CSV', 'r')
             reading=csv.DictReader(f,delimiter=',')
             for i in reading:
                 try:
@@ -89,7 +89,7 @@ def affich():
             msg3=messagebox.showerror("Error","You did not added a job offer with this ID, Create One then Retry!")
 def listApp():
     global admin
-    f = open('../Administrators/ConnectedAdmin.txt', 'r')
+    f = open('Administrators/ConnectedAdmin.txt', 'r')
     admin = f.read()
     f.close()
     global AppBrowser

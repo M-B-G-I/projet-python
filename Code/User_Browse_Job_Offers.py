@@ -7,7 +7,7 @@ def affich():
         id = enteredKey.get()
         fileslist = list()
         goodJobsList = list()
-        f = open('../Administrators/Administrators.CSV', 'r')
+        f = open('Administrators/Administrators.CSV', 'r')
         reading = csv.DictReader(f, delimiter=',')
         for i in reading:
             try:

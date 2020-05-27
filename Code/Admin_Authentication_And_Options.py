@@ -17,7 +17,7 @@ def verif():
         adminSigninScreen.destroy()
     else:
         f.close()
-        f = open("../Administrators/Administrators.CSV", 'r')
+        f = open("Administrators/Administrators.CSV", 'r')
         admins=csv.reader(f,delimiter=',')
         good=False
         for i in admins:
@@ -47,7 +47,7 @@ def verif():
             Button(optionsScreen, text='Delete Job offer', bd=3, relief='raised', font=('system', 10), height="2",
                    width="17", command=deleteJob).pack(pady=12, anchor=CENTER)
 
-            f=open('../Administrators/ConnectedAdmin.txt', 'w')
+            f=open('Administrators/ConnectedAdmin.txt', 'w')
             f.write(username_info)
             f.close()
 
