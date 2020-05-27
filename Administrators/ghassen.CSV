@@ -1,10 +1,8 @@
-ID,CompanyName,CompanyAddress,CompanyPhoneNumber,CompanyEmail,RequestedDegree,RequestedQualification,RequestedExperience,MissionDescription
-
+ID,CompanyName,CompanyAddress,CompanyPhoneNumber,CompanyEmail,RequestedDegree,RequestedQualification,RequestedExperience,MissionDescription
 1515,GHASSENcompany,"21st wall street,N.Y.,USA",29461962,oueslatighassen@gmail.com,PhD,"Python,C++
 
 ","6 years of experience.
 
 ","Project Manager and Problem solver
 
-"
-
+"

@@ -4,12 +4,13 @@ from tkinter import messagebox
 from tkinter import ttk
 
 def affich():
+    global goodAppsList
     id=enteredID.get()
     IDlist = list()
     fileslist = list()
-    goodUsersList = list()
-    if 'ALL' in id.upper:
-        f=open('Administrators/'+admin+'.CSV','r')
+    goodAppsList = list()
+    if 'ALL' in id.upper():
+        f=open('../Administrators/'+admin+'.CSV','r')
         reading=csv.DictReader(f,delimiter=',')
         for i in reading:
             try:
@@ -19,7 +20,7 @@ def affich():
             else:
                 IDlist.append(ids)
         f.close()
-        f=open('Users/Users.CSV', 'r')
+        f=open('../Users/Users.CSV', 'r')
         reading = csv.DictReader(f, delimiter=',')
         for i in reading:
             try:
@@ -29,9 +30,39 @@ def affich():
             else:
                 fileslist.append(name+'.CSV')
         f.close()
+        for i in fileslist:
+            f = open('../Users/'+i, 'r')
+            reading=csv.DictReader(f,delimiter=",")
+            for j in reading:
+                try:
+                    xyz=i['JobID']
+                except:
+                    continue
+                else:
+                    if xyz in IDlist:
+                        goodAppsList.append(j)
+            f.close()
+        adminBrowserResult = Tk()
+        adminBrowserResult.geometry('600x700+400+0')
+        adminBrowserResult.title('Application(s) Founded')
+        Label(adminBrowserResult, text='The Application(s) That Meets your Demand ('+str(len(goodAppsList))+' Application(s))').grid(
+            row=0, column=0, sticky=W)
+        # goodJobsList.insert(0,my)
+        i = 0
+        while i < len(goodAppsList)*10:
+            Label(adminBrowserResult, text='Job N°'+str(i%9+1), fg='red').grid(row=i+1, column=0, sticky=W)
+            my = ['ID','Name','Address','PhoneNumber','Email','UniversityDegree','Experience','Skills','JobID']
+            color = ['#000099', '#003300']
+            for j in range(9):
+                Label(adminBrowserResult, text=my [j], fg=color [j%2]).grid(row=i+j+2, column=0, sticky=W)
+                Label(adminBrowserResult, text=goodAppsList [i%9] [my [j]], fg=color [j%2]).grid(row=i+j+2, column=1,
+                                                                                                 sticky=W)
+            i += 10
+        adminBrowserResult.mainloop()
+
     else:
         exist=False
-        f = open("Administrators/"+admin+".CSV", 'r')
+        f = open("../Administrators/"+admin+".CSV", 'r')
         reading=csv.DictReader(f,delimiter=',')
         for i in reading:
             try:
@@ -44,7 +75,7 @@ def affich():
                     break
         f.close()
         if exist==True:
-            f=open('Users/Users.CSV', 'r')
+            f=open('../Users/Users.CSV', 'r')
             reading=csv.DictReader(f,delimiter=',')
             for i in reading:
                 try:
@@ -68,28 +99,38 @@ def affich():
                             continue
                         else:
                             if yy==id:
-                                goodUsersList.append(j)
-                                goodUsersList.append('\n')
+                                goodAppsList.append(j)
                             else:
                                 continue
                     f.close()
-            if len(goodUsersList)==0:
+            if len(goodAppsList)==0:
                 msg5=messagebox.showerror('Error','No one applied for your job offer yet, Retry later')
             else:
-                AdminBrowserResult = Tk()
-                AdminBrowserResult.geometry('600x700+400+0')
-                AdminBrowserResult.title('Update job offer')
-                Label(AdminBrowserResult, text='the people who applied for this job are').pack()
-                tx = Text(AdminBrowserResult, height=600, width=500, font=('varinda',11, 'italic'))
-                tx.insert(END, goodUsersList)
-                tx.pack()
-                AdminBrowserResult.mainloop()
+                adminBrowserResult = Tk()
+                adminBrowserResult.geometry('600x700+400+0')
+                adminBrowserResult.title('Application(s) Founded')
+                Label(adminBrowserResult, text='The Application(s) That Meets your Demand ('+str(
+                    len(goodAppsList))+' Application(s))').grid(row=0, column=0, sticky=W)
+                # goodJobsList.insert(0,my)
+                i = 0
+                while i < len(goodAppsList)*10:
+                    Label(adminBrowserResult, text='Job N°'+str(i%9+1), fg='red').grid(row=i+1, column=0, sticky=W)
+                    my = ['ID', 'Name', 'Address', 'PhoneNumber', 'Email', 'UniversityDegree', 'Experience', 'Skills',
+                          'JobID']
+                    color = ['#000099', '#003300']
+                    for j in range(9):
+                        Label(adminBrowserResult, text=my [j], fg=color [j%2]).grid(row=i+j+2, column=0, sticky=W)
+                        Label(adminBrowserResult, text=goodAppsList [i%9] [my [j]], fg=color [j%2]).grid(row=i+j+2,
+                                                                                                         column=1,
+                                                                                                         sticky=W)
+                    i += 10
+                adminBrowserResult.mainloop()
 
         else:
             msg3=messagebox.showerror("Error","You did not added a job offer with this ID, Create One then Retry!")
 def listApp():
     global admin
-    f = open('Administrators/ConnectedAdmin.txt', 'r')
+    f = open('../Administrators/ConnectedAdmin.txt', 'r')
     admin = f.read()
     f.close()
     global AppBrowser
@@ -109,4 +150,4 @@ def listApp():
                                                                                                            column=2,
                                                                                                            pady=12)
     AppBrowser.mainloop()
-#listApp()
+listApp()
