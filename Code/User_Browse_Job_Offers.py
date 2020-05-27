@@ -48,6 +48,10 @@ def affich():
                     UserBrowserResult = Tk()
                     UserBrowserResult.geometry('600x700+400+0')
                     UserBrowserResult.title('Job offers Founded')
+                    ####
+
+
+                    ####
                     Label(UserBrowserResult, text='The Jobs That Meets your Demand ('+str(len(goodJobsList))+' job offer(s))').grid(row=0,column=0,sticky=W)
                     #goodJobsList.insert(0,my)
                     i=0
