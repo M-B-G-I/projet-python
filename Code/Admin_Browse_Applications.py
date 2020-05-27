@@ -35,7 +35,7 @@ def affich():
             reading=csv.DictReader(f,delimiter=",")
             for j in reading:
                 try:
-                    xyz=i['JobID']
+                    xyz=j['JobID']
                 except:
                     continue
                 else:
@@ -49,17 +49,17 @@ def affich():
             row=0, column=0, sticky=W)
         # goodJobsList.insert(0,my)
         i = 0
-        while i < len(goodAppsList)*10:
+        while i < len(goodAppsList)*9:
             Label(adminBrowserResult, text='Job N°'+str(i%9+1), fg='red').grid(row=i+1, column=0, sticky=W)
-            my = ['ID','Name','Address','PhoneNumber','Email','UniversityDegree','Experience','Skills','JobID']
+            my = ['Name','Address','PhoneNumber','Email','UniversityDegree','Experience','Skills','JobID']
             color = ['#000099', '#003300']
-            for j in range(9):
+            for j in range(8):
                 Label(adminBrowserResult, text=my [j], fg=color [j%2]).grid(row=i+j+2, column=0, sticky=W)
                 Label(adminBrowserResult, text=goodAppsList [i%9] [my [j]], fg=color [j%2]).grid(row=i+j+2, column=1,
                                                                                                  sticky=W)
-            i += 10
+            i += 9
         adminBrowserResult.mainloop()
-
+# Not ALL
     else:
         exist=False
         f = open("../Administrators/"+admin+".CSV", 'r')
@@ -74,6 +74,7 @@ def affich():
                     exist=True
                     break
         f.close()
+# Existent ID
         if exist==True:
             f=open('../Users/Users.CSV', 'r')
             reading=csv.DictReader(f,delimiter=',')
@@ -103,8 +104,10 @@ def affich():
                             else:
                                 continue
                     f.close()
+            # No one applied
             if len(goodAppsList)==0:
                 msg5=messagebox.showerror('Error','No one applied for your job offer yet, Retry later')
+            # not(No one applied)
             else:
                 adminBrowserResult = Tk()
                 adminBrowserResult.geometry('600x700+400+0')
@@ -115,17 +118,17 @@ def affich():
                 i = 0
                 while i < len(goodAppsList)*10:
                     Label(adminBrowserResult, text='Job N°'+str(i%9+1), fg='red').grid(row=i+1, column=0, sticky=W)
-                    my = ['ID', 'Name', 'Address', 'PhoneNumber', 'Email', 'UniversityDegree', 'Experience', 'Skills',
+                    my = ['Name', 'Address', 'PhoneNumber', 'Email', 'UniversityDegree', 'Experience', 'Skills',
                           'JobID']
                     color = ['#000099', '#003300']
-                    for j in range(9):
+                    for j in range(8):
                         Label(adminBrowserResult, text=my [j], fg=color [j%2]).grid(row=i+j+2, column=0, sticky=W)
                         Label(adminBrowserResult, text=goodAppsList [i%9] [my [j]], fg=color [j%2]).grid(row=i+j+2,
                                                                                                          column=1,
                                                                                                          sticky=W)
-                    i += 10
+                    i += 9
                 adminBrowserResult.mainloop()
-
+#Non existent ID
         else:
             msg3=messagebox.showerror("Error","You did not added a job offer with this ID, Create One then Retry!")
 def listApp():
