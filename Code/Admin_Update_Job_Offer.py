@@ -130,9 +130,9 @@ def updateJob():
                     global info
                     info=row
                     update()
-                if exist == False:
-                    JobIdToBeUpdated.delete(0, END)
-                    msg = messagebox.showerror('Error', "non-existent Job ID, Retry!")
+        if exist == False:
+            JobIdToBeUpdated.delete(0, END)
+            msg = messagebox.showerror('Error', "non-existent Job ID, Retry!")
         f.close()
 
 
