@@ -50,12 +50,12 @@ def affich():
         # goodJobsList.insert(0,my)
         i = 0
         while i < len(goodAppsList)*9:
-            Label(adminBrowserResult, text='Job N°'+str(i%9+1), fg='red').grid(row=i+1, column=0, sticky=W)
+            Label(adminBrowserResult, text='Application N°'+str(i%8+1), fg='red').grid(row=i+1, column=0, sticky=W)
             my = ['Name','Address','PhoneNumber','Email','UniversityDegree','Experience','Skills','JobID']
             color = ['#000099', '#003300']
             for j in range(8):
                 Label(adminBrowserResult, text=my [j], fg=color [j%2]).grid(row=i+j+2, column=0, sticky=W)
-                Label(adminBrowserResult, text=goodAppsList [i%9] [my [j]], fg=color [j%2]).grid(row=i+j+2, column=1,
+                Label(adminBrowserResult, text=goodAppsList [i%8] [my [j]], fg=color [j%2]).grid(row=i+j+2, column=1,
                                                                                                  sticky=W)
             i += 9
         adminBrowserResult.mainloop()
@@ -116,14 +116,14 @@ def affich():
                     len(goodAppsList))+' Application(s))').grid(row=0, column=0, sticky=W)
                 # goodJobsList.insert(0,my)
                 i = 0
-                while i < len(goodAppsList)*10:
-                    Label(adminBrowserResult, text='Job N°'+str(i%9+1), fg='red').grid(row=i+1, column=0, sticky=W)
+                while i < len(goodAppsList)*9:
+                    Label(adminBrowserResult, text='Application N°'+str(i%8+1), fg='red').grid(row=i+1, column=0, sticky=W)
                     my = ['Name', 'Address', 'PhoneNumber', 'Email', 'UniversityDegree', 'Experience', 'Skills',
                           'JobID']
                     color = ['#000099', '#003300']
                     for j in range(8):
                         Label(adminBrowserResult, text=my [j], fg=color [j%2]).grid(row=i+j+2, column=0, sticky=W)
-                        Label(adminBrowserResult, text=goodAppsList [i%9] [my [j]], fg=color [j%2]).grid(row=i+j+2,
+                        Label(adminBrowserResult, text=goodAppsList [i%8] [my [j]], fg=color [j%2]).grid(row=i+j+2,
                                                                                                          column=1,
                                                                                                          sticky=W)
                     i += 9
@@ -153,4 +153,3 @@ def listApp():
                                                                                                            column=2,
                                                                                                            pady=12)
     AppBrowser.mainloop()
-#listApp()
