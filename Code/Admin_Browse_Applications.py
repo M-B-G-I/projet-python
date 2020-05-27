@@ -10,7 +10,7 @@ def affich():
     fileslist = list()
     goodAppsList = list()
     if 'ALL' in id.upper():
-        f=open('../Administrators/'+admin+'.CSV','r')
+        f=open('Administrators/'+admin+'.CSV','r')
         reading=csv.DictReader(f,delimiter=',')
         for i in reading:
             try:
@@ -20,7 +20,7 @@ def affich():
             else:
                 IDlist.append(ids)
         f.close()
-        f=open('../Users/Users.CSV', 'r')
+        f=open('Users/Users.CSV', 'r')
         reading = csv.DictReader(f, delimiter=',')
         for i in reading:
             try:
@@ -31,7 +31,7 @@ def affich():
                 fileslist.append(name+'.CSV')
         f.close()
         for i in fileslist:
-            f = open('../Users/'+i, 'r')
+            f = open('Users/'+i, 'r')
             reading=csv.DictReader(f,delimiter=",")
             for j in reading:
                 try:
@@ -62,7 +62,7 @@ def affich():
 # Not ALL
     else:
         exist=False
-        f = open("../Administrators/"+admin+".CSV", 'r')
+        f = open("Administrators/"+admin+".CSV", 'r')
         reading=csv.DictReader(f,delimiter=',')
         for i in reading:
             try:
@@ -76,7 +76,7 @@ def affich():
         f.close()
 # Existent ID
         if exist==True:
-            f=open('../Users/Users.CSV', 'r')
+            f=open('Users/Users.CSV', 'r')
             reading=csv.DictReader(f,delimiter=',')
             for i in reading:
                 try:
@@ -133,7 +133,7 @@ def affich():
             msg3=messagebox.showerror("Error","You did not added a job offer with this ID, Create One then Retry!")
 def listApp():
     global admin
-    f = open('../Administrators/ConnectedAdmin.txt', 'r')
+    f = open('Administrators/ConnectedAdmin.txt', 'r')
     admin = f.read()
     f.close()
     global AppBrowser
@@ -153,4 +153,4 @@ def listApp():
                                                                                                            column=2,
                                                                                                            pady=12)
     AppBrowser.mainloop()
-listApp()
+#listApp()
