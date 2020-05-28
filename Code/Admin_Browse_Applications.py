@@ -57,7 +57,7 @@ def affich():
                 Label(adminBrowserResult, text=goodAppsList [i%8] [my [j]], fg=color [j%2]).grid(row=i+j+2, column=1,
                                                                                                  sticky=W)
             i += 9
-        adminBrowserResult.mainloop()
+
 # Not ALL
     else:
         exist=False
@@ -113,6 +113,8 @@ def affich():
                 adminBrowserResult.title('Application(s) Founded')
                 Label(adminBrowserResult, text='The Application(s) That Meets your Demand ('+str(
                     len(goodAppsList))+' Application(s))').grid(row=0, column=0, sticky=W)
+                adminBrowserResult.mainloop()
+
                 # goodJobsList.insert(0,my)
                 i = 0
                 while i < len(goodAppsList)*9:
@@ -127,6 +129,7 @@ def affich():
                                                                                                          sticky=W)
                     i += 9
                 adminBrowserResult.mainloop()
+
 #Non existent ID
         else:
             msg3=messagebox.showerror("Error","You did not added a job offer with this ID, Create One then Retry!")
@@ -140,6 +143,7 @@ def listApp():
     AppBrowser = Tk()
     AppBrowser.geometry('350x115')
     AppBrowser.title("browser")
+
     frame = LabelFrame(AppBrowser, text='Search for the applications of an offer you created as an Admin')
     frame.grid(row=1, column=1, columnspan=10, rowspan=10)
 
