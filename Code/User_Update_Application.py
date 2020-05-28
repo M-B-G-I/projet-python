@@ -127,8 +127,8 @@ def updateJob():
                     exist = True
                     info=row
                     update()
-                else:
-                    msg2 = messagebox.showerror('Error 403',"Your ID is incorrect.Please try again!")
+        if exist==False:
+            msg2 = messagebox.showerror('Error 403',"Your ID is incorrect.Please try again!")
 
         f.close()
 
