@@ -58,6 +58,7 @@ def affich():
                                                                                                  sticky=W)
             i += 9
 
+
 # Not ALL
     else:
         exist=False
@@ -129,11 +130,13 @@ def affich():
                                                                                                          column=1,
                                                                                                          sticky=W)
                     i += 9
-                adminBrowserResult.mainloop()
+
 
 #Non existent ID
         else:
             msg3=messagebox.showerror("Error","You did not added a job offer with this ID, Create One then Retry!")
+            enteredID.delete(0,END)
+    AppBrowser.destroy()
 def listApp():
     global admin
     f = open('Administrators/ConnectedAdmin.txt', 'r')

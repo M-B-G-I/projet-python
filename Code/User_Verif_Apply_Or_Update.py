@@ -50,13 +50,16 @@ def verif():
         f.close()
     if exist==False:
         msg6=messagebox.showerror('Error','Unfounded Job ID')
+        window.destroy()
     else:
         if new == False:
-            updateWindow(JobID.get())
+            updateWindow(JobID.get(),window)
         else:
-            addApplication(JobID.get())
+            addApplication(JobID.get(),window)
+
 def verifwindow():
     global JobID
+    global window
     window = Tk()
     window.geometry('390x115')
     window.title("Apply or Update")

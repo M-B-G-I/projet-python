@@ -30,7 +30,7 @@ def save():
         f.close()
         msg2 = messagebox.showinfo('Ok', "Job offer added successfully")
         JobOfferWindow.destroy()
-
+        mainup.destroy()
 
 def update():
         global JobOfferWindow
@@ -133,6 +133,7 @@ def updateJob():
         if exist == False:
             JobIdToBeUpdated.delete(0, END)
             msg = messagebox.showerror('Error', "non-existent Job ID, Retry!")
+            mainup.destroy()
         f.close()
 
 

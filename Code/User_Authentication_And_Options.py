@@ -32,7 +32,7 @@ def verif():
             UserSigninScreen.destroy()
             # list of options
             optionsScreen=Tk()
-            optionsScreen.geometry("1024x681")
+            optionsScreen.geometry("1024x681+50+100")
             optionsScreen.title("Users Options")
             LabelFrame(optionsScreen, text='Services', bg='grey', font=('veranda', 30), height="100",
                        width="2000", ).pack(anchor=CENTER)

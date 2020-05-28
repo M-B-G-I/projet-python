@@ -11,6 +11,8 @@ def save2():
         f=open('Users/'+User+'.CSV', 'r')
     except:
         msg2 = messagebox.showerror('Error 403', "Your are not allowed to be here! CREATE AN ACCOUNT then Retry.")
+        www.destroy()
+
     else:
         f.close()
         f = open('Users/'+User+'.CSV', 'a')
@@ -23,10 +25,13 @@ def save2():
                               'Skills': UserSkills.get("1.0", END), 'JobID': JobID})
             msg2 = messagebox.showinfo('Ok', "Job offer added successfully")
             JobOfferWindow.destroy()
+            www.destroy()
         f.close()
 
-def addApplication(xyz):
+def addApplication(xyz,w):
         global JobOfferWindow
+        global www
+        www=w
         JobOfferWindow = Tk()
         JobOfferWindow.geometry('320x600+400+0')
         JobOfferWindow.title('apply for a job')

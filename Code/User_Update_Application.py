@@ -28,6 +28,8 @@ def save():
         f.close()
         msg2 = messagebox.showinfo('Ok', "Job application Update successfully")
         JobApplicationWindow.destroy()
+        ww.destroy()
+        mainupuser.destroy()
 
 
 def update():
@@ -134,10 +136,12 @@ def updateJob():
 
 
 
-def updateWindow(xyz):
+def updateWindow(xyz,w):
     global mainupuser
     global AppIdToBeUpdated
     global UserID
+    global ww
+    ww=w
     mainupuser = Tk()
     mainupuser.geometry('335x115')
     mainupuser.title("Update")

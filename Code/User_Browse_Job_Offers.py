@@ -4,6 +4,7 @@ import csv
 from Code.User_Verif_Apply_Or_Update import verifwindow
 
 def affich():
+        global UserBrowserResult
         id = enteredKey.get()
         fileslist = list()
         goodJobsList = list()
@@ -46,7 +47,7 @@ def affich():
                     enteredKey.delete(0,END)
         else:
                     UserBrowserResult = Tk()
-                    UserBrowserResult.geometry('600x700+400+0')
+                    UserBrowserResult.geometry('600x700+600+0')
                     UserBrowserResult.title('Job offers Founded')
                     ####
 
@@ -65,9 +66,7 @@ def affich():
                              Label(UserBrowserResult, text=my[j],fg=color[j%2]).grid(row=i+j+2, column=0,sticky=W)
                              Label(UserBrowserResult, text=goodJobsList [i%9] [my[j]],fg=color[j%2]).grid(row=i+j+2, column=1, sticky=W)
                         i+=10
-
-                    UserBrowserResult.mainloop()
-
+        JobBrowser.destroy()
 
 def ListJobOffers():
         global JobBrowser

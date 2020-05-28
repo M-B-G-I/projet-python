@@ -21,7 +21,7 @@ def save():
             adminlist.append(i['AdminName']+'.CSV')
         f.close()
         for i in adminlist:
-            print(i)
+            #print(i)
             f=open('Administrators/'+str(i),'r')
             reading=csv.DictReader(f,delimiter=',')
             for j in reading:

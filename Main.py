@@ -8,16 +8,16 @@ import csv
 
 def BackFromaAminToMain():
     adminScreen.destroy()
-    mainDel()
+    main()
 def BackFromUserToMain():
     userScreen.destroy()
-    mainDel()
+    main()
 
 def AdminWindow():
     # Login Screen
     global adminScreen
     adminScreen=Tk()
-    adminScreen.geometry('1024x681')
+    adminScreen.geometry('1024x681+0+0')
     adminScreen.title('Administrator Login')
     adminScreen['bg']='black'
     LabelFrame(adminScreen,text='Hello Administrator',bg='grey',font=('veranda',30),height="100", width="2000",).pack(anchor=CENTER)
@@ -34,7 +34,7 @@ def UserWindow():
     # Login Screen
     global userScreen
     userScreen = Tk()
-    userScreen.geometry('1024x681')
+    userScreen.geometry('1024x681+0+0')
     userScreen.title('User Login')
     userScreen['bg']='white'
     # Sign in or Sign up
@@ -87,4 +87,4 @@ def main():
     # end creation.
     mainScreen.mainloop()
 
-mainDel()
+main()
