@@ -113,6 +113,10 @@ def affich():
                 adminBrowserResult.title('Application(s) Founded')
                 Label(adminBrowserResult, text='The Application(s) That Meets your Demand ('+str(
                     len(goodAppsList))+' Application(s))').grid(row=0, column=0, sticky=W)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7a555d7b8690ee1e3fe02c950a12f72b18f332d9
 
                 # goodJobsList.insert(0,my)
                 i = 0
