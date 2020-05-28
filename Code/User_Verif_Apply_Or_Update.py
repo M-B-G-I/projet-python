@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 import csv
 from Code.User_Update_Application import updateWindow
 from Code.User_Add_Application import addApplication
@@ -21,11 +22,39 @@ def verif():
             if yy==JobID.get():
                 new=False
                 break
-    if new==False:
-        updateWindow(JobID.get())
-    else:
-        addApplication(JobID.get())
     f.close()
+    fileslist=list()
+    f=open('Administrators/Administrators.CSV','r')
+    reading=csv.DictReader(f,delimiter=',')
+    for i in reading:
+        try:
+            name=i['AdminName']
+        except:
+            continue
+        else:
+            fileslist.append(name+'.CSV')
+    f.close()
+    exist=False
+    for i in fileslist:
+        f=open('Administrators/'+i,'r')
+        reading=csv.DictReader(f,delimiter=',')
+        for j in reading:
+            try:
+                idd=j['ID']
+            except:
+                continue
+            else:
+                if idd==JobID.get():
+                    exist=True
+                    break
+        f.close()
+    if exist==False:
+        msg6=messagebox.showerror('Error','Unfounded Job ID')
+    else:
+        if new == False:
+            updateWindow(JobID.get())
+        else:
+            addApplication(JobID.get())
 def verifwindow():
     global JobID
     window = Tk()
