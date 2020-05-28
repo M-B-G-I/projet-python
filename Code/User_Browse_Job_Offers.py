@@ -50,7 +50,8 @@ def affich():
                     UserBrowserResult.title('Job offers Founded')
                     ####
 
-
+                    Button(UserBrowserResult, text='Apply/Update', bd=2, relief='raised', font=("system", 5),
+                           width="11", command=verifwindow).grid(row=0, column=1, sticky=W,padx=50,pady=6)
                     ####
                     Label(UserBrowserResult, text='The Jobs That Meets your Demand ('+str(len(goodJobsList))+' job offer(s))').grid(row=0,column=0,sticky=W)
                     #goodJobsList.insert(0,my)
@@ -64,8 +65,7 @@ def affich():
                              Label(UserBrowserResult, text=my[j],fg=color[j%2]).grid(row=i+j+2, column=0,sticky=W)
                              Label(UserBrowserResult, text=goodJobsList [i%9] [my[j]],fg=color[j%2]).grid(row=i+j+2, column=1, sticky=W)
                         i+=10
-                    Button(UserBrowserResult, text='Apply/Update', bd=2, relief='raised', font=("system", 5),
-                           width="21", command=verifwindow).grid(row=i+1, column=0, sticky=W)
+
                     UserBrowserResult.mainloop()
 
 
