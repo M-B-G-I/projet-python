@@ -8,10 +8,10 @@ import csv
 
 def BackFromaAminToMain():
     adminScreen.destroy()
-    main()
+    mainDel()
 def BackFromUserToMain():
     userScreen.destroy()
-    main()
+    mainDel()
 
 def AdminWindow():
     # Login Screen
@@ -87,4 +87,4 @@ def main():
     # end creation.
     mainScreen.mainloop()
 
-main()
+mainDel()

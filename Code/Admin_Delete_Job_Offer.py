@@ -23,7 +23,7 @@ def ok():
         else:
             msg = messagebox.showerror("Error", "this job offer ID does not exist")
             f.close()
-    main.destroy()
+    mainDel.destroy()
 
     f=open('Administrators/'+admin+'.CSV', 'w')
     writing = csv.DictWriter(f, fieldnames=['ID', 'CompanyName', 'CompanyAddress', 'CompanyPhoneNumber', 'CompanyEmail', 'RequestedDegree',
@@ -37,12 +37,12 @@ def deleteJob():
     f = open('Administrators/ConnectedAdmin.txt', 'r')
     admin = f.read()
     f.close()
-    global main
+    global mainDel
     global EI
-    main = Tk()
-    main.geometry('335x115')
-    main.title("Delete")
-    frame = LabelFrame(main, text='Enter the ID of the job offer to be deleted')
+    mainDel = Tk()
+    mainDel.geometry('335x115')
+    mainDel.title("Delete")
+    frame = LabelFrame(mainDel, text='Enter the ID of the job offer to be deleted')
     frame.grid(row=1, column=1, columnspan=10, rowspan=10)
 
     Label(frame, text=' ID').grid(row=2, column=1, sticky=W, pady=3)
@@ -53,4 +53,4 @@ def deleteJob():
     B=Button(frame, text='delete', bd=1, relief='raised', font=("system", 5), width="6", command=ok).grid(row=6,
                                                                                                            column=2,
                                                                                                            pady=12)
-    main.mainloop()
+    mainDel.mainloop()

@@ -135,13 +135,13 @@ def updateJob():
 
 
 def updateWindow(xyz):
-    global main
+    global mainupuser
     global AppIdToBeUpdated
     global UserID
-    main = Tk()
-    main.geometry('335x115')
-    main.title("Update")
-    frame = LabelFrame(main, text='Enter the ID of the job offer to be Updated')
+    mainupuser = Tk()
+    mainupuser.geometry('335x115')
+    mainupuser.title("Update")
+    frame = LabelFrame(mainupuser, text='Enter the ID of the job offer to be Updated')
     frame.grid(row=1, column=1, columnspan=10, rowspan=10)
 
     Label(frame, text='Your ID').grid(row=2, column=1, sticky=W, pady=3)
@@ -157,6 +157,6 @@ def updateWindow(xyz):
     B = Button(frame, text='Update', bd=1, relief='raised', font=("system", 5), width="6", command=updateJob).grid(row=6,
                                                                                                             column=2,
                                                                                                             pady=12)
-    main.mainloop()
+    mainupuser.mainloop()
 
 #updateWindow()
