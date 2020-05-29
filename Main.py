@@ -4,7 +4,7 @@ from Code.User_Authentication_And_Options import UserAuthAndOp
 from Code.Admin_Create_Account import createAdmin
 from Code.User_Create_Account import createUser
 import csv
-
+from os import remove
 
 def BackFromaAminToMain():
     adminScreen.destroy()
@@ -12,6 +12,7 @@ def BackFromaAminToMain():
 def BackFromUserToMain():
     userScreen.destroy()
     main()
+    remove('Users/ConnectedUsers.txt')
 
 def AdminWindow():
     # Login Screen
